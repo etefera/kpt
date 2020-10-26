@@ -14,9 +14,7 @@ description: >
 Update pulls in upstream changes and merges them into a local package.
 Changes may be applied using one of several strategies.
 
-{{% pageinfo color="primary" %}}
 All changes must be committed to git before running update
-{{% /pageinfo %}}
 
 ### Examples
 <!--mdtogo:Examples-->

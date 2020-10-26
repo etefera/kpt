@@ -7,11 +7,11 @@ description: >
   Create and publish a kpt package with subpackage in its directory tree
 ---
 
-{{% pageinfo color="warning" %}}
+
 
 #### Notice: Subpackages support is available with kpt version v0.34.0+ for [cfg] commands only
 
-{{% /pageinfo %}}
+
 
 This guide walks you through an example to create, parameterize and publish a
 kpt package with a [subpackage] in it.

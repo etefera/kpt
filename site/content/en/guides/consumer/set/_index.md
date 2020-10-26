@@ -33,7 +33,7 @@ To address the UX limitations of hand editing YAML, kpt provides built-in
 commands which **expose setting values in a user friendly way from
 the commandline**.
 
-{{% pageinfo color="primary" %}}
+
 Rather than exposing values as input parameters to a template,
 commands **modify the package data in place**.
 
@@ -44,7 +44,7 @@ While OpenAPI is often used to define schema for static types
 (e.g. this is what **a Deployment** looks like), kpt uses OpenAPI to define
 **schema for individual instances of a type** as well
 (e.g. this is what **the nginx Deployment** looks like).
-{{% /pageinfo %}}
+
 
 To see more on how to create a setter: [create setter guide]
 

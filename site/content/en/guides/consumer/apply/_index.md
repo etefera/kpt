@@ -84,10 +84,9 @@ them is deleted. The [kpt live init] command will generate an inventory template
 [kpt live apply] to generate an actual ConfigMap in the cluster which we refer
 to as an inventory object.
 
-{{% pageinfo color="warning" %}}
+
 The inventory template must be created for a package to be applied using
 `kpt live apply`.
-{{% /pageinfo %}}
 
 ### Init Command
 

@@ -7,10 +7,10 @@ description: >
    Writing and running functions as executables
 ---
 
-{{% pageinfo color="warning" %}}
+
 The Exec runtime is Alpha. It is disabled by default, and must be enabled with
 the `--enable-exec` flag.
-{{% /pageinfo %}}
+
 
 Config functions may be run as executables outside of containers. Exec
 functions read input and write output like container functions, but are run
@@ -19,11 +19,11 @@ outside of a container.
 Running functions as executables can be useful for function development, or for
 running trusted executables.
 
-{{% pageinfo color="info" %}}
+
 Exec functions may be converted to container functions by building the
 executable into a container and invoking it as the container's `CMD` or
 `ENTRYPOINT`.
-{{% /pageinfo %}}
+
 
 ## Imperative Run
 

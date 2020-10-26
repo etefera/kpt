@@ -29,7 +29,7 @@ Substitutions are like setters, but instead of setting a entire field
 value, **they use setters to set only parts of a field value.** -- e.g.
 only set the *tag* portion of the `image` field.
 
-{{% pageinfo color="primary" %}}
+
 
 - Substitutions are defined in OpenAPI definitions
 - OpenAPI is referenced from configuration through field line comments
@@ -38,7 +38,7 @@ only set the *tag* portion of the `image` field.
 Because setters are defined using data as part of the package as OpenAPI data,
 they don’t need to be compiled into the tool and **can be created
 for an instance of a package** without modifying kpt.
-{{% /pageinfo %}}
+
 
 To see more on how to create a substitution: [create substitution guide]
 
@@ -96,7 +96,7 @@ fetching package /package-examples/helloworld-set from https://github.com/Google
 List the [setters] -- find the **image-tag setter**.  When set it will perform
 a substitution.
 
-{{% pageinfo color="primary" %}}
+
 There is no command to list substitutions because they are not invoked directly,
 but are instead performed when a setter referenced by the substitution is
 invoked.
@@ -107,7 +107,7 @@ a definition with the prefix `io.k8s.cli.substitutions.`
 
 In this example the substitution name and setter name happen to match, but this
 is not required, and substitutions may have multiple setters.
-{{% /pageinfo %}}
+
 
 ### List Command
 

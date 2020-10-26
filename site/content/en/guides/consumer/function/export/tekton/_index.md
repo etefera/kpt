@@ -9,9 +9,9 @@ description: >
 
 In this tutorial, you will pull an example package that declares Kubernetes resources and two kpt functions. Then you will export a pipeline that runs the functions against the resources on [Tekton] and modify it to make it fully functional. How to setting up Tekton is also included if you don't have one running yet. This tutorial takes about 20 minutes.
 
-{{% pageinfo color="info" %}}
+
 A kpt version `v0.32.0` or higher is required.
-{{% /pageinfo %}}
+
 
 ## Before you begin
 
@@ -26,9 +26,9 @@ mkdir function-export-example
 cd function-export-example
 ```
 
-{{% pageinfo color="warning" %}}
+
 All commands must be run at the root of this directory.
-{{% /pageinfo %}}
+
 
 Use `kpt pkg get` to fetch source files of this tutorial:
 

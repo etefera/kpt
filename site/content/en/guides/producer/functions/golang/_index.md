@@ -285,11 +285,11 @@ var node *yaml.RNode
 replicas, err := node.Pipe(yaml.Lookup("spec", "replicas"))
 ```
 
-{{% pageinfo color="info" %}}
+
 Operations are any types implementing the `yaml.Filter` interface, so it is
 simple to define custom operations and provide them to `Pipe`, combining them
 with the built-in operations.
-{{% /pageinfo %}}
+
 
 ### Visiting Fields and Elements
 

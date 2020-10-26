@@ -27,10 +27,8 @@ They are composed of 2 parts: a pattern and a list of values.
   retrieves the values from the referenced setters, and replaces the markers
   with the setter values.
 
-{{% pageinfo color="primary" %}}
 Creating a substitution requires that the package has a Kptfile.  If one does
 not exist for the package, run `kpt pkg init DIR/` to create one.
-{{% /pageinfo %}}
 
 ## Substitutions explained
 
@@ -306,10 +304,8 @@ spec:
         image: otherspace/nginx:1.7.9 # {"$kpt-set":"nested-subst"}
 ```
 
-{{% pageinfo color="primary" %}}
 When setting a field through a substitution, the names of the setters
 are used *not* the name of the substitution.  The name of the substitution is
 *only used in the configuration field references*.
-{{% /pageinfo %}}
 
 [setters]: ../setters/

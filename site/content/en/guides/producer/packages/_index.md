@@ -7,11 +7,11 @@ description: >
     Writing effective packages
 ---
 
-{{% pageinfo color="warning" %}}
+
 
 ### Notice: Under Development
 
-{{% /pageinfo %}}
+
 
 *Reusable, customizable components can be built and shared as packages.*
 
@@ -21,10 +21,10 @@ Packages are a **pattern for developing reusable, customizable
 configuration**. Packages are typically published and consumed by
 different teams.
 
-{{% pageinfo color="primary" %}}
+
 Because packages can be updated to new versions, consumers
 can pull in changes to a package after fetching it.
-{{% /pageinfo %}}
+
 
 ### Example use cases for packages
 
@@ -62,14 +62,14 @@ We will use [kustomize] to structure the package:
 2. **Factoring a single resource into multiple files**
    - Example: `resources` + `patches`
 
-{{% pageinfo color="info" %}}
+
 Remote kustomize bases may be used to reference the publisher focused pieces
 directly from a git repository rather than including them in the package.
 
 One disadvantage of this approach is that it creates a dependency on the
 remote package being accessible in order to push -- if you can't fetch the
 remote package, then you can't push changes.
-{{% /pageinfo %}}
+
 
 Example package structure:
 
@@ -96,13 +96,13 @@ The `instance` directory contains patches with fields populated for things
 most **consumers are expected to modify** -- e.g. namespace, cpu, memory,
 user, password, etc.
 
-{{% pageinfo color="warning" %}}
+
 While the package is structured into publisher and consumer focused pieces,
 it is still possible for the package consumer to modify (via direct edits)
 or override (via patches) any part of the package.
 
 **Factoring is for UX, not for enforcement of specific configuration values.**
-{{% /pageinfo %}}
+
 
 ## Commands, Args and Environment Variables
 

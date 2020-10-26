@@ -7,10 +7,10 @@ description: >
    Writing and running functions as Starlark scripts
 ---
 
-{{% pageinfo color="warning" %}}
+
 The Starlark runtime is Alpha. It is disabled by default, and must be enabled
 with the `--enable-star` flag.
-{{% /pageinfo %}}
+
 
 Functions may be written as [Starlark] scripts which modify a ResourceList
 provided as a variable.

@@ -25,7 +25,7 @@ embedded in other systems. For example, functions could be:
 
 {{< svg src="images/fn" >}}
 
-{{% pageinfo color="primary" %}}
+
 Unlikely pure-templating and DSL approaches, functions must be able to both
 _read_ and _write_ resources, and specifically should be able to read resources
 they have previously written -- updating the inputs rather generating new
@@ -37,7 +37,7 @@ configuration to match the declared state specified by the functionConfig.
 
 Functions that implement abstractions should update resources they have
 generated in the past by reading them from the input.
-{{% /pageinfo %}}
+
 
 The following function runtimes are available in kpt:
 
@@ -105,10 +105,10 @@ items:
   ...
 ```
 
-{{% pageinfo color="primary" %}}
+
 Some functions introduce a new resource type bespoke to the function instead of
 using a ConfigMap as the functionConfig kind.
-{{% /pageinfo %}}
+
 
 ### ResourceList.results
 

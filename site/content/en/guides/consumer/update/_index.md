@@ -33,14 +33,14 @@ differences.
 This allows package consumers to customize their copy, and merge updates
 from upstream.
 
-{{% pageinfo color="primary" %}}
+
 The technique of merging fields to perform updates is also how `kubectl apply`
 updates remote cluster resources with local file changes, without overwriting
 changes to the resources made by the cluster control-plane (e.g. an autoscaler
 can set replicas without apply overwriting them).
 
 See [update strategies] for more choices on how to merge upstream changes.
-{{% /pageinfo %}}
+
 
 ## `kpt pkg update` explained
 
@@ -93,7 +93,7 @@ Fetch the `helloworld-set` package at version `v0.3.0`.
 fetching package /package-examples/helloworld-set from https://github.com/GoogleContainerTools/kpt to helloworld
 ```
 
-{{% pageinfo color="info" %}}
+
 Each subdirectory within a git repo may be tagged with its own version
 using the subdirectory path as a tag prefix, and kpt will automatically
 resolve the subdirectory version.
@@ -101,7 +101,7 @@ resolve the subdirectory version.
 `package-examples/helloworld-set@v0.3.0` is resolved to the tag
 `package-examples/helloworld-set/v0.3.0` if it exists, otherwise it is
 resolved to the tag `v0.3.0`.
-{{% /pageinfo %}}
+
 
 ## Edit the contents
 
@@ -158,13 +158,13 @@ The new package contents with local modifications.
 
 ## Commit local changes
 
-{{% pageinfo color="warning" %}}
+
 In order for updates to be easily undone, configuration must be
 committed to git prior to performing a package update.
 
 kpt will throw an error if trying to update a package and the git repo
 has uncommitted changes.
-{{% /pageinfo %}}
+
 
 <!-- @commitLocalChanges @verifyGuides-->
 ```sh

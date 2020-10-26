@@ -8,11 +8,11 @@ description: >
   contents to a cluster
 ---
 
-{{% pageinfo color="warning" %}}
+
 
 #### Notice: Subpackages support is available with kpt version v0.34.0+ for [cfg] commands only
 
-{{% /pageinfo %}}
+
 
 This guide walks you through an example to get, view, set and apply contents of an
 example kpt package with a [subpackage] in its directory tree.

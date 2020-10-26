@@ -28,10 +28,10 @@ a fields through comments on the fields.
 Setters may be invoked to programmatically modify the configuration
 using `kpt cfg set` to set and/or substitute values.
 
-{{% pageinfo color="primary" %}}
+
 Creating a setter requires that the package has a Kptfile.  If one does
 not exist for the package, run `kpt pkg init DIR/` to create one.
-{{% /pageinfo %}}
+
 
 {{% hide %}}
 <!-- @createKptfile @verifyGuides-->

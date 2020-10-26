@@ -13,10 +13,8 @@ description: >
 `kpt pkg sync set` can be used to add or update Kptfile dependencies
 programmatically.
 
-{{% pageinfo color="primary" %}}
 Note: command must be run from within the directory containing Kptfile
 to be updated.
-{{% /pageinfo %}}
 
 ### Examples
 <!--mdtogo:Examples-->

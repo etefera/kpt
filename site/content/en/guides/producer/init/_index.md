@@ -23,7 +23,7 @@ however they like using the tool of their choice.
 Publishing a package is done by pushing the git directory
 (and optionally [tagging] it with a version).
 
-{{% pageinfo color="primary" %}}
+
 Multiple packages may exist in a single repo under separate subdirectories.
 
 Packages may be nested -- both parent (composite) and child
@@ -37,7 +37,7 @@ A package is versioned by tagging the git repo as one of:
 So package example that exists in the example folder of the repo, can
 be individually versioned (as version v1.0.2) by creating the tag `example/v1.0.2`.
 
-{{% /pageinfo %}}
+
 
 {{< svg src="images/producer-guide" >}}
 

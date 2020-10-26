@@ -83,7 +83,7 @@ cat cockroachdb/cockroachdb-statefulset.yaml | grep "kind: StatefulSet"
 
 {{% /hide %}}
 
-{{% pageinfo color="info" %}}
+
 
 - Any git subdirectory containing configuration (e.g. `deploy.yaml`) may be
   fetched and used as a package
@@ -95,7 +95,7 @@ cat cockroachdb/cockroachdb-statefulset.yaml | grep "kind: StatefulSet"
   with the format `<path to package in repo>/<version>`, similar to how go
   modules are versioned. For example, a tag named `staging/cockroachdb/v1.2.3`
   would be interpreted by kpt as version `v1.2.3` of the cockroachdb package.
-{{% /pageinfo %}}
+
 
 ## View the Kptfile
 
@@ -164,12 +164,12 @@ The cockroachdb package fetched from [kubernetes examples] contains a
 `cockroachdb-statefulset.yaml` file with the resource configuration, as well
 as other files included in the directory.
 
-{{% pageinfo color="info" %}}
+
 `kpt pkg get` created a `Kptfile` since one did not exist
 (for storing package state).  If the upstream package already defines a
 `Kptfile`, then `kpt pkg get` will update the `Kptfile` copied from
 upstream rather than replacing it.
-{{% /pageinfo %}}
+
 
 ### Command
 
@@ -247,13 +247,13 @@ done
 
 {{% /hide %}}
 
-{{% pageinfo color="info" %}}
+
 This guide used `kubectl apply` to demonstrate how kpt packages work out of the
 box with tools that have been around since the beginning of Kubernetes.
 
 Kpt also provides the next-generation set of Kubernetes apply commands under
 the [kpt live] command.
-{{% /pageinfo %}}
+
 
 ## View the applied package
 
