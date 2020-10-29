@@ -18,7 +18,9 @@
     "url": "https://github.com/bep/tech-doc-hugo/issues"
   },
   "homepage": "https://github.com/bep/tech-doc-hugo#readme",
-  "dependencies": {},
+  "dependencies": {
+    "docsify-cli": "^4.4.1"
+  },
   "devDependencies": {
     "autoprefixer": "^9.7.4",
     "markdownlint-cli": "^0.23.2",
