@@ -1,13 +1,3 @@
----
-title: "Contact"
-linkTitle: "Contact"
-type: docs
-weight: 20
-menu:
-  main:
-    weight: 7
----
-
 Do you have questions, comments, suggestions for improving KPT?
 
 We'd love to hear from you!
