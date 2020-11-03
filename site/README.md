@@ -29,8 +29,81 @@ status.
 transform and validate configuration.
 
 ## Installation
-Install via gcloud, homebrew, binaries or source.
+Install via gcloud, homebrew, binaries or the source.
+
+### gcloud
+Install as a gcloud component.
+
+```sh
+gcloud components install kpt
+```
+
+```sh
+kpt version
+```
+
+The version of kpt installed using `gcloud` may not be the latest released version.
+
+### Binaries
+Download and run statically compiled go binaries.
+
+- [Linux (x64)][linux]
+- [macOS (x64)][darwin]
+- [Windows (x64)][windows]
+
+```sh
+# For linux/mac
+chmod +x kpt
+```
+
+**Note:** to run on **MacOS** the first time, it may be necessary to open the
+program from the finder with *ctrl-click open*.
+
+```sh
+kpt version
+```
+
+### Docker
+Run kpt in a docker container.
+
+[gcr.io/kpt-dev/kpt]
+
+```sh
+docker run gcr.io/kpt-dev/kpt version
+```
+
+### Homebrew
+Install as a brew tap.
+
+```sh
+brew tap GoogleContainerTools/kpt https://github.com/GoogleContainerTools/kpt.git
+brew install kpt
+```
+
+```sh
+kpt version
+```
+
+
+### Source
+Dust off your go compiler and install from source.
+
+```sh
+GO111MODULE=on go get -v github.com/GoogleContainerTools/kpt
+```
+
+**Note:** `kpt version` will return *unknown* for binaries installed
+with `go get`.
+
+```sh
+kpt help
+```
 
 ## Contribution
-We use a pull request workflow on **GitHub**. New users are always welcome!
+We use a pull request workflow on [**GitHub**](https://github.com/GoogleContainerTools/kpt). New users are always welcome!
 
+
+[linux]: https://storage.googleapis.com/kpt-dev/latest/linux_amd64/kpt
+[darwin]: https://storage.googleapis.com/kpt-dev/latest/darwin_amd64/kpt
+[windows]: https://storage.googleapis.com/kpt-dev/latest/windows_amd64/kpt.exe
+[gcr.io/kpt-dev/kpt]: https://console.cloud.google.com/gcr/images/kpt-dev/GLOBAL/kpt?gcrImageListsize=30
