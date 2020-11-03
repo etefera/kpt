@@ -1,12 +1,3 @@
----
-title: "Architecture"
-linkTitle: "Architecture"
-weight: 1
-type: docs
-description: >
-   Kpt Architecture
----
-
 ## Background
 
 The kpt's design mirrors the Kubernetes control-plane architecture -- with multiple programs

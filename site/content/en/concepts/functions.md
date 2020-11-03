@@ -1,11 +1,4 @@
----
-title: "Functions"
-linkTitle: "Functions"
-weight: 4
-type: docs
-description: >
-   Functions goals and specification
----
+# Function goals and specifications
 
 ## Introduction
 

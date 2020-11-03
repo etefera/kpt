@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Command Reference"
 linkTitle: "Command Reference"
 type: docs
@@ -8,13 +8,13 @@ menu:
     weight: 3
 description: >
     Overview of kpt commands
----
-
+--- -->
+# Overview of kpt commands
 <!--mdtogo:Short
     Overview of kpt commands
 -->
 
-{{< asciinema key="kpt" rows="10" preload="1" >}}
+<!-- {{< asciinema key="kpt" rows="10" preload="1" >}} -->
 
 <!--mdtogo:Long-->
 

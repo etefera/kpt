@@ -7,11 +7,7 @@ frameworks, and platforms.
 Kpt includes solutions to fetch, display, customize, update, validate, and
 apply Kubernetes configuration. -->
 
-Install via gcloud, homebrew, binaries or source.
-
-We use a pull request workflow on **GitHub**. New users are always welcome!
-
-A packaging solution for resource configuration.
+<!-- A packaging solution for resource configuration.
 Fetch and update configuration using git and YAML.
 
 A cli UX layer on top of YAML
@@ -21,4 +17,20 @@ The next-generation of apply with manifest based pruning and resource
 status.
 
 Extend the built-in capabilities of kpt by writing functions to generate,
+transform and validate configuration. -->
+## Tools
+
+- pkg: Fetch and update configuration using git and YAML.
+- cfg: A cli UX layer on top of YAML.
+Display and modify configuration files without ever dropping into an editor.
+- live: The next-generation of apply with manifest based pruning and resource
+status.
+- fn: Extend the built-in capabilities of kpt by writing functions to generate,
 transform and validate configuration.
+
+## Installation
+Install via gcloud, homebrew, binaries or source.
+
+## Contribution
+We use a pull request workflow on **GitHub**. New users are always welcome!
+

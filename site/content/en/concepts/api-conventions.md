@@ -1,11 +1,4 @@
----
-title: "API Conventions"
-linkTitle: "API Conventions"
-weight: 2
-type: docs
-description: >
-   Kpt API Conventions
----
+# kpt API Conventions
 
 ## CLI Conventions
 

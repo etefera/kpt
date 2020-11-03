@@ -1,11 +1,4 @@
----
-title: "Packaging"
-linkTitle: "Packaging"
-weight: 3
-type: docs
-description: >
-  Packaging goals and design decisions
----
+# Packaging goals and design decisions
 
 ## Packaging
 
