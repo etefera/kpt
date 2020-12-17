@@ -1,32 +1,25 @@
-<!-- Kpt (pronounced “kept”) is an OSS tool for building declarative workflows
-on top of resource configuration.
-
-Its git + YAML architecture means it just works with existing tools,
-frameworks, and platforms.
-
-Kpt includes solutions to fetch, display, customize, update, validate, and
-apply Kubernetes configuration. -->
-
-<!-- A packaging solution for resource configuration.
-Fetch and update configuration using git and YAML.
-
-A cli UX layer on top of YAML
-Display and modify configuration files without ever dropping into an editor.
-
-The next-generation of apply with manifest based pruning and resource
-status.
-
-Extend the built-in capabilities of kpt by writing functions to generate,
-transform and validate configuration. -->
 ## Tools
 
-- pkg: Fetch and update configuration using git and YAML.
-- cfg: A cli UX layer on top of YAML.
+- The **pkg** command group contains subcommands which read remote upstream git repositories, and write local directories. They are focused on providing porcelain on top of workflows which would otherwise require wrapping git to pull clone subdirectories and perform updates by merging resources rather than files.
+- The **cfg** command group contains subcommands which read and write local YAML files. They are focused on providing porcelain on top of workflows which would otherwise require viewing and editing YAML directly.
+Many cfg subcommands may also read from STDIN, allowing them to be paired with other tools such as kubectl get.
 Display and modify configuration files without ever dropping into an editor.
-- live: The next-generation of apply with manifest based pruning and resource
+```sh
+# Print a package using tree based structure.
+$ kpt cfg tree helloworld --name --image --replicas
+helloworld
+├── [deploy.yaml]  Deployment helloworld-gke
+│   ├── spec.replicas: 5
+│   └── spec.template.spec.containers
+│       └── 0
+│           ├── name: helloworld-gke
+│           └── image: gcr.io/kpt-dev/helloworld-gke:0.1.0
+└── [service.yaml]  Service helloworld-gke
+```
+- The **live** command group contains the next-generation versions of apply related commands for deploying local configuration packages to a cluster with manifest-based pruning and resource
 status.
-- fn: Extend the built-in capabilities of kpt by writing functions to generate,
-transform and validate configuration.
+- The **fn** command group extends the built-in capabilities of kpt by allowing users to write functions that generate,
+transform and validate configuration files. Functions can be packaged as container images, starlark scripts, or binary executables.
 
 ## Installation
 Install via gcloud, homebrew, binaries or the source.
@@ -36,9 +29,6 @@ Install as a gcloud component.
 
 ```sh
 gcloud components install kpt
-```
-
-```sh
 kpt version
 ```
 
@@ -54,14 +44,11 @@ Download and run statically compiled go binaries.
 ```sh
 # For linux/mac
 chmod +x kpt
+kpt version
 ```
 
 **Note:** to run on **MacOS** the first time, it may be necessary to open the
 program from the finder with *ctrl-click open*.
-
-```sh
-kpt version
-```
 
 ### Docker
 Run kpt in a docker container.
@@ -78,9 +65,6 @@ Install as a brew tap.
 ```sh
 brew tap GoogleContainerTools/kpt https://github.com/GoogleContainerTools/kpt.git
 brew install kpt
-```
-
-```sh
 kpt version
 ```
 
@@ -90,12 +74,7 @@ Dust off your go compiler and install from source.
 
 ```sh
 GO111MODULE=on go get -v github.com/GoogleContainerTools/kpt
-```
-
-**Note:** `kpt version` will return *unknown* for binaries installed
-with `go get`.
-
-```sh
+# `kpt version` will return *unknown* for binaries installed with `go get`.
 kpt help
 ```
 
