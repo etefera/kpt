@@ -1,9 +1,11 @@
 - [Home](/)
-- About
-    * [Design](about/kpt-design.md)
 
-- [Command Reference](reference/)
+- Subcommand Reference
+    * [fn](reference/fn)
+
+- About
+    * [Design](about/kpt-design)
 
 - [Frequently Asked Questions](faq/)
-<!-- * [Concepts] -->
+
 - [Contact Us](contact/)

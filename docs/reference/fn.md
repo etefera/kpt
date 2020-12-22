@@ -1,45 +1,65 @@
----
-title: "Run"
-linkTitle: "run"
-type: docs
-description: >
-   Locally execute one or more functions in containers
----
+# kpt fn
 
-<!--mdtogo:Short
-    Locally execute one or more functions in containers
--->
+## Commands
 
+### export
+Exports a workflow pipeline that runs kpt functions alongside necessary
+configurations.
+
+```sh
+kpt fn export DIR/ [--fn-path FUNCTIONS_DIR/] --workflow ORCHESTRATOR [--output OUTPUT_FILENAME]
+
+DIR:
+  Path to a package directory.
+FUNCTIONS_DIR:
+  Read functions from the directory instead of the DIR/.
+ORCHESTRATOR:
+  Supported orchestrators are:
+    - github-actions
+    - cloud-build
+    - gitlab-ci
+    - jenkins
+    - tekton
+    - circleci
+OUTPUT_FILENAME:
+  Specifies the filename of the generated pipeline. If omitted, the default
+  output is stdout
+```
+
+#### Examples
+
+```sh
+# read functions from DIR, run them against it as one step.
+# write the generated GitHub Actions pipeline to main.yaml.
+kpt fn export DIR/ --output main.yaml --workflow github-actions
+```
+
+```sh
+# discover functions in FUNCTIONS_DIR and run them against resource in DIR.
+# write the generated Cloud Build pipeline to stdout.
+kpt fn export DIR/ --fn-path FUNCTIONS_DIR/ --workflow cloud-build
+```
+
+### run
 Generate, transform, or validate configuration files using locally run
 functions.
+
+```sh
+kpt fn run DIR [flags]
+
+DIR:
+  Path to a package directory.  Defaults to stdin if unspecified.
+```
 
 Functions are packaged as container images, starlark scripts, or binary
 executables which are run against the contents of a package.
 
 Get an overview on how to use `kpt fn run` from the [Running Functions] guide.
 
-This page dives into details of the `kpt fn run` command flow and serves as a
-reference for advanced usecases.
-
-## Synopsis
-
-<!--mdtogo:Long-->
-
-```sh
-kpt fn run DIR [flags]
-```
-
 If the container exits with non-zero status code, run will fail and print the
 container `STDERR`.
 
-```sh
-DIR:
-  Path to a package directory.  Defaults to stdin if unspecified.
-```
-
-<!--mdtogo-->
-
-## Examples
+#### Examples
 
 <!--mdtogo:Examples-->
 
@@ -67,7 +87,7 @@ kpt fn run DIR/
 
 <!--mdtogo-->
 
-## Structured Results
+#### Structured Results
 
 Functions may emit results using the structure defined in the
 [typescript result] interface as an alternative to exiting with a non-zero
@@ -83,7 +103,7 @@ mkdir results/
 kpt fn run example-configs/ --results-dir results/ --image gcr.io/kpt-functions/validate-rolebinding:results -- subject_name=bob@foo-corp.com
 ```
 
-## Network Access
+#### Network Access
 
 By default, container functions cannot access network. `kpt` may enable network
 access using the `--network` flag, and specifying that a network is required in
@@ -111,7 +131,7 @@ kpt fn source fixtures/*invalid.yaml |
   kpt fn run --fn-path fc.yaml --network 2>error.txt || true
 ```
 
-## Mounting Directories
+#### Mounting Directories
 
 By default, container functions cannot access the local file system. `kpt` may
 enable functions to mount volumes using the `--mount` flag passing the same
@@ -143,7 +163,7 @@ Depending on the container image, the configuration function may not have
 permissions to access mounted volumes. Check how the function is running inside
 the container in case of permissions issues.
 
-## Environment Variables
+#### Environment Variables
 
 `kpt` will not export any local environment variables by default when launching a
 Docker container. You can explicitly specify the environment variables that you
@@ -181,7 +201,7 @@ merged with declarative values.
 * Same key but different values: declarative value will be replaced by
  imperative value.
 
-## Deferring Failure
+#### Deferring Failure
 
 When running multiple validation functions, it may be desired to defer failures
 until all functions have been run so that the results of all functions are
@@ -200,9 +220,9 @@ metadata:
       deferFailure: true
 ```
 
-## Imperative Run Specifics
+#### Imperative Run Specifics
 
-### Generating FunctionConfig for Imperative Runs
+##### Generating FunctionConfig for Imperative Runs
 
 When functions are run imperatively, the functionConfig will be generated from
 command line arguments.
@@ -256,17 +276,17 @@ items:
   ...
 ```
 
-### Caveats to Running Imperatively
+#### Caveats to Running Imperatively
 
 kpt does not handle imperatively running functions which use the following
 types of arguments.
 
-#### Complex arguments
+##### Complex arguments
 
 Functions may take complex arguements such as lists and maps that have nested
 fields. It's recommended to run such functions declaratively.
 
-#### Arguments interpreted as flags
+##### Arguments interpreted as flags
 
 Some functions like `helm-template`, `istioctl-analyze`, and `kustomize-build`
 take arbitrary command line flags as arguments. Passing arguments such as
@@ -279,7 +299,7 @@ the following:
 When passing flags as arguments, it's recommended to run functions
 declaratively.
 
-#### Functions expecting spec field
+##### Functions expecting spec field
 
 `kpt fn run` provides any arguments passed imperatively to the container image
 in a `ConfigMap` containing a `data` field. Some config functions may expect
@@ -289,9 +309,9 @@ details in the following:
 
 * [Issue 757]
 
-## Declarative Run Specifics
+#### Declarative Run Specifics
 
-### Scoping Rules
+##### Scoping Rules
 
 Functions which are nested under some sub directory are scoped only to
 Resources under that same sub directory. This allows fine grain control over
@@ -342,7 +362,7 @@ kpt fn run DIR/ --fn-path FUNCTIONS_DIR/
 
 Alternatively, scoping can be disabled using `--global-scope` flag.
 
-### Multiple Functions Ordering
+##### Multiple Functions Ordering
 
 Functions execution follows a deterministic order and is based on the following set of rules:
 
@@ -368,7 +388,7 @@ with shorter lexical file path is executed first.
     └── my-function2.yaml # executed third
 ```
 
-### Custom `functionConfig`
+##### Custom `functionConfig`
 
 Functions may define their own API input types - these may be client-side
 equivalents of CRDs:
@@ -408,17 +428,39 @@ because:
 * it takes complex arguments with nested values
 * it takes flags as arguments
 
-## Next Steps
+### sink
+Implements a [sink function] by reading STDIN and writing configuration.
 
-* Get a quickstart on writing functions from the [function producer docs].
-* Find out how to structure a pipeline of functions from the
-  [functions concepts] page.
+```sh
+kpt fn sink [DIR]
 
-[Running Functions]: ../../../guides/consumer/function/
+DIR:
+  Path to a package directory.  Defaults to stdout if unspecified.
+```
+
+The `sink` will not prune / delete files for delete resources because it only knows
+about files for which it sees input resources.
+
+### source
+Implements a [source function] by reading configuration and writing to STDOUT.
+
+```sh
+kpt fn source [DIR...]
+
+DIR:
+  Path to a package directory.  Defaults to stdin if unspecified.
+```
+#### Examples
+
+```sh
+# print to stdout configuration from DIR/ formatted as an input source
+kpt fn source DIR/
+```
+
 [typescript result]: https://github.com/GoogleContainerTools/kpt-functions-sdk/blob/master/ts/kpt-functions/src/types.ts
 [Docker Volumes]: https://docs.docker.com/storage/volumes/
 [Issue 823]: https://github.com/GoogleContainerTools/kpt/issues/823/
 [Issue 824]: https://github.com/GoogleContainerTools/kpt/issues/824/
 [Issue 757]: https://github.com/GoogleContainerTools/kpt/issues/757/
-[function producer docs]: ../../../guides/producer/functions/
-[functions concepts]: ../../../concepts/functions/
+[sink function]: /about/kpt-design?id=sink-function
+[source function]: /about/kpt-design?id=source-function
