@@ -1,12 +1,6 @@
 - [Home](/)
-- Concepts
-    * [API Conventions](concepts/api-conventions.md)
-
-    * [Architecture](concepts/architecture.md)
-
-    * [Functions](concepts/functions.md)
-
-    * [Packaging](concepts/packaging.md)
+- About
+    * [Design](about/kpt-design.md)
 
 - [Command Reference](reference/)
 
