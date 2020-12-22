@@ -1,6 +1,6 @@
 - [Home](/)
 
-- Subcommand Reference
+- Command Reference
     * [fn](reference/fn)
 
 - About
