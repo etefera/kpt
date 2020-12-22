@@ -1,6 +1,7 @@
 - [Home](/)
 
 - Command Reference
+    * [cfg](reference/cfg)
     * [fn](reference/fn)
 
 - About
