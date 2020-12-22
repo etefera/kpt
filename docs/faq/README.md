@@ -1,3 +1,5 @@
+# Frequently Asked Questions
+
 #### **Q: What's with the name?**
 
 A: `kpt` was inspired by `apt`, but with a Kubernetes focus. We wanted to

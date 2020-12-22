@@ -1,4 +1,5 @@
-Do you have questions, comments, suggestions for improving KPT?
+# Contact Us
+Do you have questions, comments, suggestions for improving kpt?
 
 We'd love to hear from you!
 
