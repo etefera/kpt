@@ -3,6 +3,7 @@
 - Command Reference
     * [cfg](reference/cfg)
     * [fn](reference/fn)
+    * [live](reference/live)
     * [pkg](reference/pkg)
 
 - About

@@ -34,7 +34,7 @@ VERSION:
   Defaults to the local package version that was last fetched.
 
 FLAGS:
---diff-type:
+--diff-type
   The type of changes to view (local by default). Following types are
   supported:
 
@@ -47,14 +47,14 @@ FLAGS:
   3way: shows changes in local package and source package at target version
         relative to original version side by side
 
---diff-tool:
+--diff-tool
   Commandline tool (diff by default) for showing the changes.
   Note that it overrides the KPT_EXTERNAL_DIFF environment variable.
   
   # Show changes using 'meld' commandline tool
   kpt pkg diff @master --diff-tool meld
 
---diff-opts:
+--diff-opts
   Commandline options to use with the diffing tool.
   Note that it overrides the KPT_EXTERNAL_DIFF_OPTS environment variable.
   # Show changes using "diff" with recurive options
@@ -354,7 +354,7 @@ LOCAL_DEST_DIRECTORY:
       of the one that would be created, fail
 
 FLAGS:
---strategy:
+--strategy
   Controls how changes to the local package are handled.
   Defaults to fast-forward.
 
@@ -416,7 +416,7 @@ VERSION:
     * commit: update the local contents to the remote commit
 
 FLAGS:
---strategy:
+--strategy
   Controls how changes to the local package are handled.  Defaults to fast-forward.
 
     * resource-merge: perform a structural comparison of the original /
@@ -430,7 +430,7 @@ FLAGS:
       DELETE the local package at local_pkg_dir/ and replace it
       with the remote version.
 
--r, --repo:
+-r, --repo
   Git repo url for updating contents.  Defaults to the repo the package
   was fetched from.
 

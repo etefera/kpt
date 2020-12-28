@@ -617,31 +617,31 @@ DIR:
   Path to a package directory.  Defaults to STDIN if not specified.
 
 FLAGS:
---args:
+--args
   if true, print the container args field
 
---command:
+--command
   if true, print the container command field
 
---env:
+--env
   if true, print the container env field
 
---field:
+--field
   dot-separated path to a field to print
 
---image:
+--image
   if true, print the container image fields
 
---name:
+--name
   if true, print the container name fields
 
---ports:
+--ports
   if true, print the container port fields
 
---replicas:
+--replicas
   if true, print the replica field
 
---resources:
+--resources
   if true, print the resource reservations
 ```
 
