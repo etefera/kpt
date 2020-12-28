@@ -1,4 +1,4 @@
-# kpt cfg
+# kpt pkg
 
 ## Commands
 
