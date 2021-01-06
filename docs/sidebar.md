@@ -6,6 +6,10 @@
     * [live](reference/live)
     * [pkg](reference/pkg)
 
+- Tutorials
+
+- Function Catalog
+
 - About
     * [Design](about/kpt-design)
 
