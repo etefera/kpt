@@ -1,9 +1,9 @@
-## Tools
+## Overview
 
-- The **pkg** command group contains subcommands which read remote upstream git repositories, and write local directories. They are focused on providing porcelain on top of workflows which would otherwise require wrapping git to pull clone subdirectories and perform updates by merging resources rather than files.
-- The **cfg** command group contains subcommands which read and write local YAML files. They are focused on providing porcelain on top of workflows which would otherwise require viewing and editing YAML directly.
-Many cfg subcommands may also read from STDIN, allowing them to be paired with other tools such as kubectl get.
-Display and modify configuration files without ever dropping into an editor.
+- The [**pkg**](reference/pkg) command group contains subcommands which read remote upstream git repositories and write to local directories. They perform updates by merging resources rather than files and are focused on replacing workflows which wrap git commands.
+- The [**cfg**](reference/cfg) command group contains subcommands which read and write local YAML files. They are focused on providing porcelain on top of workflows which would otherwise require viewing and editing YAML directly.
+Many cfg subcommands may also read from STDIN, allowing them to be paired with other commands such as `kubectl get`.
+They allow users to display and modify configuration files without ever dropping into an editor.
 ```sh
 # Print a package using tree based structure.
 $ kpt cfg tree helloworld --name --image --replicas
@@ -16,9 +16,9 @@ helloworld
 │           └── image: gcr.io/kpt-dev/helloworld-gke:0.1.0
 └── [service.yaml]  Service helloworld-gke
 ```
-- The **live** command group contains the next-generation versions of apply related commands for deploying local configuration packages to a cluster with manifest-based pruning and resource
+- The [**live**](reference/live) command group contains the next-generation versions of `kubectl apply` related commands for deploying local configuration packages to a cluster with manifest-based pruning and resource
 status.
-- The **fn** command group extends the built-in capabilities of kpt by allowing users to write functions that generate,
+- The [**fn**](reference/fn) command group extends the built-in capabilities of kpt by allowing users to write functions that generate,
 transform and validate configuration files. Functions can be packaged as container images, starlark scripts, or binary executables.
 
 ## Installation
