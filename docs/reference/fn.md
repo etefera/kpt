@@ -85,6 +85,12 @@ kpt fn run DIR/ --fn-path FUNCTIONS_DIR/
 kpt fn run DIR/
 ```
 
+```sh
+# pipe a resource from stdin and execute a function against it.
+# print the results to stdout
+kpt fn source . | kpt fn run --image gcr.io/example.com/my-fn
+```
+
 <!--mdtogo-->
 
 #### Structured Results
@@ -120,8 +126,7 @@ metadata:
     config.k8s.io/function: |
       container:
         image: gcr.io/kpt-functions/kubeval
-        network:
-          required: true
+        network: true
     config.kubernetes.io/local-config: 'true'
 ```
 

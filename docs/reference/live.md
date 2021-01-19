@@ -61,6 +61,14 @@ group.  `kpt live apply` tracks the state of your applied resource set and
 related configuration. This helps `kpt` to reliably reconcile the real world
 resources with your configuration changes.
 
+### Client-Side Apply versus Server-Side Apply
+
+kpt live apply defaults to client-side apply, so the updates are accomplished
+by calculating and sending a patch from the client. Server-side apply
+with the `--server-side` flag sends the entire resource to the server
+for the update. The server-side flags and functionality are the same
+as kubectl.
+
 ### Prune
 
 kpt live apply will automatically delete resources which have been
