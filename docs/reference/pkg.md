@@ -5,7 +5,7 @@
 ### desc
 Displays information about the upstream package in tabular format.
 
-```sh
+```
 kpt pkg desc DIR
 
 DIR:
@@ -22,7 +22,7 @@ kpt pkg desc hello-world/
 ### diff
 Displays differences between upstream and local packages.
 
-```sh
+```
 kpt pkg diff [DIR@VERSION]
 
 DIR:
@@ -106,7 +106,7 @@ kpt pkg diff @v4.0.0 --diff-type 3way --diff-tool meld --diff-tool-opts "-a"
 Reads the local package, modifies the package to use the latest kpt features
 and fixes any deprecated feature traces.
 
-```sh
+```
 kpt pkg fix LOCAL_PKG_DIRECTORY [flags]
 
 LOCAL_PKG_DIRECTORY:
@@ -135,7 +135,7 @@ kpt pkg fix .
 Fetches a remote package from a git subdirectory and writes it to a new
 local directory.
 
-```sh
+```
 kpt pkg get REPO_URI[.git]/PKG_PATH[@VERSION] LOCAL_DEST_DIRECTORY [flags]
 
 REPO_URI:
@@ -198,7 +198,7 @@ kpt pkg get https://github.com/kubernetes/examples.git/@[COMMIT_HASH] ./
 ### init
 Initializes an existing empty directory as an empty kpt package.
 
-```sh
+```
 kpt pkg init DIR [flags]
 
 DIR:
@@ -238,7 +238,7 @@ kpt pkg init my-pkg --tag kpt.dev/app=cockroachdb \
 Fetches and updates packages using a manifest to manage a collection
 of dependencies.
 
-```sh
+```
 kpt pkg sync LOCAL_PKG_DIR [flags]
 
 LOCAL_PKG_DIR:
@@ -319,7 +319,7 @@ against the directory.
 ### sync set
 Add or updates Kptfile dependencies programmatically.
 
-```sh
+```
 kpt pkg set REPO_URI[.git]/PKG_PATH[@VERSION] LOCAL_DEST_DIRECTORY [flags]
 
 REPO_URI:
@@ -398,7 +398,7 @@ kpt pkg sync set https://github.com/GoogleContainerTools/kpt.git/package-example
 ### update
 Pulls upstream changes and merges them into a local package.
 
-```sh
+```
 kpt pkg update LOCAL_PKG_DIR[@VERSION] [flags]
 
 LOCAL_PKG_DIR:

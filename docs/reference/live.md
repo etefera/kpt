@@ -6,7 +6,7 @@
 Creates, updates and deletes resources in the cluster to make the remote
 cluster resources match the local package configuration.
 
-```sh
+```
 kpt live apply DIR [flags]
 
 
@@ -264,7 +264,7 @@ kpt live apply --reconcile-timeout=15m --poll-period=5s my-dir/
 ### destroy
 Removes all files belonging to a package from the cluster.
 
-```sh
+```
 kpt live destroy DIR
 
 DIR:
@@ -283,7 +283,7 @@ kpt live destroy my-dir/
 Compares the live cluster state of each pacakge
 resource against the local package config.
 
-```sh
+```
 kpt live diff DIR
 
 DIR:
@@ -315,7 +315,7 @@ kpt live diff my-dir/
 Downloads and prints the OpenAPI schema from the cluster
 given by the context.
 
-```sh
+```
 kpt live fetch-k8s-schema [flags]
 
 FLAGS:
@@ -335,7 +335,7 @@ kpt live fetch-k8s-schema --context=myContext --pretty-print
 ### init
 Initializes a package with an object to track previously applied resources.
 
-```sh
+```
 kpt live init DIR [flags]
 
 DIR:
@@ -369,7 +369,7 @@ kpt live init --namespace=test my-dir/
 ### preview
 Prints the changes `apply` would make to the cluster.
 
-```sh
+```
 kpt live preview DIR [flags]
 
 DIR:
@@ -397,7 +397,7 @@ kpt live preview --destroy my-dir/
 Print the status for all resources in the live state
 that belong to the current inventory.
 
-```sh
+```
 kpt live status (DIR | STDIN) [flags]
 
 DIR | STDIN:

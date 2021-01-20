@@ -5,7 +5,7 @@
 ### annotate
 Sets annotations on resources.
 
-```sh
+```
 kpt cfg annotate DIR --kv KEY=VALUE...
 
 DIR:
@@ -61,7 +61,7 @@ kpt cfg annotate DIR --kv key1=value1 --kv key2=value2
 ### cat
 Prints the resources in a package as yaml to stdout.
 
-```sh
+```
 kpt cfg cat DIR
 
 DIR:
@@ -115,7 +115,7 @@ kpt cfg cat my-dir/
 ### count
 Summarizes the number of resources in a package.
 
-```sh
+```
 kpt cfg count [DIR]
 
 DIR:
@@ -146,7 +146,7 @@ Creates a setter.
 values through package metadata (OpenAPI). They are a safer alternative to
 other substitution techniques which do not have the context of the
 structured data -- e.g. using `sed` to replace values. -->
-```sh
+```
 kpt cfg create-setter DIR NAME VALUE
 
 DIR:
@@ -228,7 +228,7 @@ kpt cfg create-setter DIR/ app nginx --field "annotations.app" --type string
 ### create-subst
 Creates a substitution.
 
-```sh
+```
 kpt cfg create-subst DIR NAME --field-value VALUE --pattern PATTERN
 
 DIR
@@ -310,7 +310,7 @@ kpt cfg set . tag-setter v1.8.0
 ### delete-setter
 Deletes a setter.
 
-```sh
+```
 kpt cfg delete-setter DIR NAME
 
 DIR:
@@ -333,7 +333,7 @@ kpt cfg delete-setter DIR/ replicas
 ### delete-subst
 Deletes a substitution.
 
-```sh
+```
 kpt cfg delete-subst DIR NAME
 
 DIR:
@@ -357,7 +357,7 @@ kpt cfg delete-subst DIR/ image-tag
 ### fmt
 Formats the field ordering in YAML configuration files.
 
-```sh
+```
 kpt cfg fmt [DIR]
 
 DIR:
@@ -433,7 +433,7 @@ kustomize build | kpt cfg fmt
 Reads resources from a package or stdin and filters them by their
 field values.
 
-```sh
+```
 kpt cfg grep QUERY DIR
 
 QUERY:
@@ -486,7 +486,7 @@ kpt cfg grep "spec.template.spec.containers[name=nginx].image=nginx:1\.7\.9" \
 ### list-setters
 Displays the setters that may be provided to the set command.
 
-```sh
+```
 kpt cfg list-setters DIR [NAME]
 
 DIR
@@ -503,7 +503,7 @@ It also displays the following:
 - The name of fields that would be updated by calling set
 
 #### Examples
-```sh
+```
 # list the setters in the hello-world package
 kpt cfg list-setters hello-world/
 
@@ -515,7 +515,7 @@ replicas   4       isabella   good value    1
 Modifies configuration by setting or substituting
 a user provided value into resource fields.
 
-```sh
+```
 kpt cfg set DIR NAME VALUE
 
 DIR
@@ -610,7 +610,7 @@ kpt cfg set hello-world/ tag 1.8.1
 Displays the contents of a package using a tree structure to show
 the relationships between directories, resources, and fields.
 
-```sh
+```
 kpt cfg tree [DIR] [flags]
 
 DIR:

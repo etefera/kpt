@@ -4,7 +4,7 @@
 - The [**cfg**](reference/cfg) command group contains subcommands which read and write local YAML files. They are focused on providing porcelain on top of workflows which would otherwise require viewing and editing YAML directly.
 Many cfg subcommands may also read from STDIN, allowing them to be paired with other commands such as `kubectl get`.
 They allow users to display and modify configuration files without ever dropping into an editor.
-```sh
+```
 # Print a package using tree based structure.
 $ kpt cfg tree helloworld --name --image --replicas
 helloworld

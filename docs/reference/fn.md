@@ -6,7 +6,7 @@
 Exports a workflow pipeline that runs kpt functions alongside necessary
 configurations.
 
-```sh
+```
 kpt fn export DIR/ [--fn-path FUNCTIONS_DIR/] --workflow ORCHESTRATOR [--output OUTPUT_FILENAME]
 
 DIR:
@@ -44,7 +44,7 @@ kpt fn export DIR/ --fn-path FUNCTIONS_DIR/ --workflow cloud-build
 Generate, transform, or validate configuration files using locally run
 functions.
 
-```sh
+```
 kpt fn run DIR [flags]
 
 DIR:
@@ -328,7 +328,7 @@ and invoking them -- passing in only those resources scoped to the function.
 **Example:** Function declared in `stuff/my-function.yaml` is scoped to
 Resources in `stuff/` and is NOT scoped to Resources in `apps/`
 
-```sh
+```
 .
 ├── stuff
 │   ├── inscope-deployment.yaml
@@ -345,7 +345,7 @@ directory named `functions`.
 
 **Example**: This is equivalent to previous example
 
-```sh
+```
 .
 ├── stuff
 │   ├── inscope-deployment.yaml
@@ -382,7 +382,7 @@ with shorter lexical file path is executed first.
 
 **Example:** Directory structure with multiple functions and corresponding ordering
 
-```sh
+```
 .
 ├── stuff
 │   ├── deployment.yaml
@@ -436,7 +436,7 @@ because:
 ### sink
 Implements a [sink function] by reading STDIN and writing configuration.
 
-```sh
+```
 kpt fn sink [DIR]
 
 DIR:
@@ -449,7 +449,7 @@ about files for which it sees input resources.
 ### source
 Implements a [source function] by reading configuration and writing to STDOUT.
 
-```sh
+```
 kpt fn source [DIR...]
 
 DIR:
