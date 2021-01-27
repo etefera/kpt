@@ -7,10 +7,9 @@
     * [pkg](reference/pkg)
 
 - Tutorials
-    * [Deploy a redis cluster]()
-    * [Validate against company policies]()
-    * [Set up Kafka with helm-template]()
-    * [Configure a CI/CD pipeline]()
+    * [Deploy CockroachDB](tutorials/deploy_db)
+    * [~~Set up Kafka with helm-template~~]()
+    * [~~Integrate with a CI/CD pipeline~~]()
 
 - Function Catalog
     * [Generators and Sources](catalog/generators)
