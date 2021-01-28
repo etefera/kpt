@@ -24,6 +24,7 @@
       '/.*/sidebar.md': '/sidebar.md'
       },
       coverpage: "coverpage.md",
+      auto2top: true,
       repo:'true',
       corner: {
         url: "https://github.com/GoogleContainerTools/kpt", 
@@ -63,6 +64,11 @@
   }
   .sidebar-toggle {
     bottom: 0;
+  }
+
+  /* Right side table of contents */
+  aside.toc-nav {
+    z-index: 19;
   }
   .page_toc div.active{
     border-color: black;
