@@ -1,6 +1,6 @@
 # Deploy CockroachDB with a Modified Configuration
 
-## Fetch the remote repository
+## Fetch the remote package
 
 First, copy the `staging/cockroachdb` subdirectory from the kubernetes example repository on GitHub using `pkg get`.
 
@@ -28,8 +28,6 @@ The kubernetes configuration can be inspected by using `cfg tree`.
 ```sh
 kpt cfg tree my-cockroachdb --all
 ```
-
-We can create setters for the fields in the below output to modify the configuration for our purposes.
 
 ```
 my-cockroachdb
@@ -61,6 +59,8 @@ my-cockroachdb
     └── spec.ports: [{port: 26257, targetPort: 26257, name: grpc}, {port: 8080, targetPort: 8080, name: http}]
 ```
 
+We can create setters for the fields in the above output to modify the configuration for our purposes.
+
 ### Add setters to variable fields in configuration
 In this case, we want to change the number of replicas of our database, so we'll create a setter that matches the
 `replicas` field to change later.
@@ -84,8 +84,9 @@ kpt cfg list-setters my-cockroachdb/
 
 ```
 my-cockroachdb/
-    NAME     VALUE   SET BY   DESCRIPTION   COUNT   REQUIRED   IS SET  
-  replicas   5                              1       No         Yes    
+    NAME     VALUE   SET BY            DESCRIPTION             COUNT   REQUIRED   IS SET  
+  replicas   5                The name of the field to         0       No         Yes     
+                              manipulate        
 ```
 
 Now we can deploy our configuration to a kubernetes cluster.
@@ -105,7 +106,7 @@ apply our package with `live apply`.
 kpt live apply my-cockroachdb/
 ```
 
-## Change the configuration live
+## Change the configuration and redeploy
 
 We now have a database living in a cluster with a configuration we specified, but what if we want
 to change that configuration? Let's scale up our database by increasing the number of `replicas` to 10.
@@ -122,8 +123,9 @@ kpt cfg list-setters my-cockroachdb/
 
 ```
 my-cockroachdb/
-    NAME     VALUE   SET BY   DESCRIPTION   COUNT   REQUIRED   IS SET  
-  replicas   10                             1       No         Yes   
+    NAME     VALUE   SET BY            DESCRIPTION             COUNT   REQUIRED   IS SET  
+  replicas   10               The name of the field to         0       No         Yes     
+                              manipulate  
 ```
 
 Once we're satisfied with our change, updating our configuration server-side is as easy as running `live apply` again.
