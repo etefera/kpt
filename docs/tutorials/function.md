@@ -86,3 +86,21 @@ apply our resources with `live apply`.
 ```sh
 kpt live apply kafka-operator/local-configs/
 ```
+
+Each of the inflated templates will be created in the cluster.
+
+```
+serviceaccount/kafka-operator created
+serviceaccount/kafka-operator-authproxy created
+clusterrole.rbac.authorization.k8s.io/chart-kafka-operator-authproxy created
+clusterrole.rbac.authorization.k8s.io/chart-kafka-operator-operator created
+clusterrolebinding.rbac.authorization.k8s.io/chart-kafka-operator-authproxy created
+clusterrolebinding.rbac.authorization.k8s.io/chart-kafka-operator-operator created
+configmap/inflate-kafka created
+secret/kafka-operator-serving-cert created
+service/chart-kafka-operator-alertmanager created
+service/chart-kafka-operator-authproxy created
+service/chart-kafka-operator-operator created
+deployment.apps/chart-kafka-operator-operator created
+validatingwebhookconfiguration.admissionregistration.k8s.io/kafka-operator-validating-webhook created
+```
