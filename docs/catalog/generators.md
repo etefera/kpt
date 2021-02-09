@@ -11,7 +11,7 @@
 | Image | Description | Example 
 | ----- | ----------- | ------- 
 | [gcr.io/kpt-functions/expand-team-cr](https://github.com/GoogleContainerTools/kpt-functions-sdk/blob/master/ts/demo-functions/src/expand_team_cr.ts) |  [Demo] Reads custom resources of type Team and generates multiple Namespace and RoleBinding objects.  | 
-| [gcr.io/kpt-functions/helm-template](https://github.com/GoogleContainerTools/kpt-functions-catalog/blob/master/functions/ts/src/helm_template.ts) | Render chart templates locally using helm template. | [Example](https://github.com/GoogleContainerTools/kpt-functions-catalog/tree/master/examples/helm-template/) 
+| [gcr.io/kpt-functions/helm-inflator](https://github.com/GoogleContainerTools/kpt-functions-catalog/blob/master/functions/ts/helm-inflator/src/helm_inflator.ts) | Render chart templates locally using helm template. | [Example](https://github.com/GoogleContainerTools/kpt-functions-catalog/tree/master/examples/helm-inflator/) 
 | [gcr.io/kpt-functions/read-yaml](https://github.com/GoogleContainerTools/kpt-functions-sdk/blob/master/ts/demo-functions/src/read_yaml.ts) | [Demo] Reads a directory of Kubernetes configuration recursively. | 
 
 # Miscellaneous functions
