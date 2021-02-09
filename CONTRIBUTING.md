@@ -54,32 +54,17 @@ code changes and the commit message should start with `Docs:`.
 
 ### Run the docs locally
 
-Make docs changes and test them by using hugo to run the kpt site locally. Hugo
-continuously builds your website as you make changes.
+Make markdown docs changes and test them by using any server hosting the [site/]
+directory. With `python` installed, this can be done with one line:
 
-- install hugo
-- `make servedocs`
+```sh
+(cd site && python -m SimpleHTTPServer 3000)
+```
 
 It's usually a good idea to test locally for the following:
 
 - Broken links
 - Rendering static content
-- Ordering of new pages using the "weight" key in the header
-
-### Update docs
-
-Docs are under [site/] and use the [docsy] theme for hugo. Learn more about
-docsy from [docsy docs]. The site itself are generated from the markdown
-automatically after commit.
-
-### Adding or updating catalog functions
-
-The config functions catalog is auto-generated using [this node package]. Update
-the catalog.json file with the appropriate information for your function like
-its type (source, sink, validator, transformer, or generator). Regenerate the
-catalog page with:
-
-`make gencatalog`
 
 ### Adding or updating diagrams
 
