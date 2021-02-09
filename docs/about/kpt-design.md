@@ -362,7 +362,7 @@ specifically:
 
 At a high level, a function can be conceptualized like so:
 
-{{< png src="images/func" >}}
+![Function diagram](../static/images/func.png)
 
 - `FUNC`: A program that performs CRUD (Create, Read, Update, Delete)
   operations on the input. This program can be packaged as a container,
@@ -380,7 +380,7 @@ There are two special-case functions: source functions and sink functions.
 
 A Source Function takes no `input`:
 
-{{< png src="images/source" >}}
+![Source diagram](../static/images/source.png)
 
 Instead, the function typically produces the `output` by reading configurations
 from an external system (e.g. reading files from a filesystem). Find examples in
@@ -390,7 +390,7 @@ the [sources catalog].
 
 A Sink Function produces no `output`:
 
-{{< png src="images/sink" >}}
+![Sink diagram](../static/images/sink.png)
 
 Instead, the function typically writes configurations to an external system
 (e.g. writing files to a filesystem). Find examples in the [sinks catalog].
@@ -400,7 +400,7 @@ Instead, the function typically writes configurations to an external system
 In order do something useful with a function, we need to compose a pipeline
 with a source and a sink function.
 
-{{< png src="images/pipeline" >}}
+![Pipeline diagram](../static/images/pipeline.png)
 
 You can also use a container-based workflow orchestrator by exporting a workflow
 pipeline. Get detailed tutorials on how to use `kpt fn export` from the
@@ -409,8 +409,6 @@ pipeline. Get detailed tutorials on how to use `kpt fn export` from the
 ## Next Steps
 
 - See the [Configuration IO API Semantics] for when to use resource annotations.
-- Get a quickstart on writing functions from the [function producer docs].
-- Learn more ways of using the `kpt fn` command from the [reference] doc.
 - Consult the [FAQ] for answers to common questions.
 
 [Configuration IO API Semantics]: https://github.com/kubernetes-sigs/kustomize/blob/master/cmd/config/docs/api-conventions/config-io.md
