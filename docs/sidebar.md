@@ -9,7 +9,7 @@
 - Tutorials
     * [Deploy CockroachDB](tutorials/deploy_db)
     * [Set up Kafka with helm-inflator](tutorials/function)
-    * [~~Integrate with a CI/CD pipeline~~]()
+    * [Integrate with a CI/CD pipeline](tutorials/cicd)
 
 - Function Catalog
     * [Generators and Sources](catalog/generators)
