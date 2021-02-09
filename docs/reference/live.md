@@ -3,9 +3,15 @@
 ## Commands
 
 ### apply
+
+<!--mdtogo:ApplyShort
+    Apply a package to the cluster (create, update, delete)
+-->
+
 Creates, updates and deletes resources in the cluster to make the remote
 cluster resources match the local package configuration.
 
+<!--mdtogo:ApplyLong-->
 ```
 kpt live apply DIR [flags]
 
@@ -39,6 +45,7 @@ FLAGS:
   events, which will print the events as they happen. The other option is
   table, which will show the output in a table format.
 ```
+<!--mdtogo-->
 
 This is an extended version of kubectl apply, with added support
 for pruning and blocking on resource status. It has a different usage pattern (args + flags)
@@ -53,25 +60,20 @@ from kubectl to make it consistent with other kpt commands.
 |Prune                | Imperative and error prone | Declarative and reliable  |
 |Status               | Not supported              | Supported                 |
 
-<!--
-##### Applied resource set
-
-This refers to the set of resources in the directory applied to cluster as a
+The applied resource set refers to the set of resources in the directory applied to cluster as a
 group.  `kpt live apply` tracks the state of your applied resource set and
 related configuration. This helps `kpt` to reliably reconcile the real world
 resources with your configuration changes.
 
-### Client-Side Apply versus Server-Side Apply
-
-kpt live apply defaults to client-side apply, so the updates are accomplished
+`kpt live apply` defaults to client-side apply, so the updates are accomplished
 by calculating and sending a patch from the client. Server-side apply
 with the `--server-side` flag sends the entire resource to the server
 for the update. The server-side flags and functionality are the same
 as kubectl.
 
-### Prune
+#### Prune
 
-kpt live apply will automatically delete resources which have been
+`kpt live apply` will automatically delete resources which have been
 previously applied, but which are no longer included. This clean-up
 functionality is called pruning. For example, consider a package
 which has been applied with the following three resources:
@@ -93,10 +95,10 @@ config-map-2 (ConfigMap)
 ```
 
 When the updated package is applied, `config-map-1` is automatically
-deleted (pruned) since it is omitted.
+deleted (pruned) because it is omitted.
 
 In order to take advantage of this automatic clean-up, a package must contain
-an **Inventory Template**, which is a ConfigMap with a special label. An example is:
+an **Inventory Template**, which is a ConfigMap with a special label. Observe the below example.
 
 ```yaml
 apiVersion: v1
@@ -108,20 +110,20 @@ metadata:
     cli-utils.sigs.k8s.io/inventory-id: b49dd93f-28db-4626-b42d-749dd4c5ba2f
 ```
 
-And the special label is:
+The special label is the following:
 
 ```
 cli-utils.sigs.k8s.io/inventory-id: *b49dd93f-28db-4626-b42d-749dd4c5ba2f*
 ```
 
-`kpt live apply` recognizes this template from the special label, and based
-on this kpt will create new inventory object with the metadata of all applied
+`kpt live apply` recognizes this template from the special label; based
+on this, kpt will create new inventory object with the metadata of all applied
 objects in the ConfigMap's data field. Subsequent `kpt live apply` commands can
 then query the inventory object, and calculate the omitted objects, cleaning up
 accordingly. On every subsequent apply operation, the inventory object is updated
 to reflect the current set of resources.
 
-### Ordering
+#### Ordering
 
 `kpt live apply` will sort the resources before applying them. This makes sure
 namespaces are applied before resources going into the namespace, configmaps
@@ -163,7 +165,7 @@ The following resources will be applied last in the following order:
 
 * ValidatingWebhookConfiguration
 
-### Status (reconcile-timeout=\<DURATION\>)
+#### Status (reconcile-timeout=\<DURATION\>)
 
 kpt live apply also has support for computing status for resources. This is
 useful during apply for making sure that not only are the set of resources applied
@@ -180,7 +182,7 @@ the fields in the status object of the resource and the conditions that
 are set by the custom controller. If CRDs follow the recommendations below,
 kpt live apply will be able to correctly compute status
 
-#### Recommendations for CRDs
+##### Recommendations for CRDs
 
 The custom controller should use the following conditions to signal whether
 a resource has been fully reconciled, and whether it has encountered any
@@ -242,10 +244,11 @@ status:
 
 The status for this resource state will be InProgress. So if the
 `--reconcile-timeout` flag is set, kpt live apply will wait until
-the `Reconciling` condition is `False` before pruning and exiting. -->
+the `Reconciling` condition is `False` before pruning and exiting.
 
 #### Examples
 
+<!--mdtogo:ApplyExamples-->
 ```sh
 # apply resources and prune
 kpt live apply my-dir/
@@ -260,10 +263,15 @@ kpt live apply --reconcile-timeout=15m my-dir/
 # apply resources and specify how often to poll the cluster for resource status
 kpt live apply --reconcile-timeout=15m --poll-period=5s my-dir/
 ```
+<!--mdtogo-->
 
 ### destroy
-Removes all files belonging to a package from the cluster.
 
+<!--mdtogo:DestroyShort-->
+Removes all files belonging to a package from the cluster.
+<!--mdtogo-->
+
+<!--mdtogo:DestroyLong-->
 ```
 kpt live destroy DIR
 
@@ -271,18 +279,27 @@ DIR:
   Path to a package directory.  The directory must contain exactly
   one ConfigMap with the grouping object annotation.
 ```
+<!--mdtogo-->
 
 #### Examples
 
+<!--mdtogo:DestroyExamples-->
 ```sh
 # remove all resources in a package from the cluster
 kpt live destroy my-dir/
 ```
+<!--mdtogo-->
 
 ### diff
+
+<!--mdtogo:DiffShort
+    Diff the local package config against the live cluster resources.
+-->
+
 Compares the live cluster state of each pacakge
 resource against the local package config.
 
+<!--mdtogo:DiffLong-->
 ```
 kpt live diff DIR
 
@@ -294,6 +311,7 @@ ENVIRONMENT VARIABLES:
   Commandline diffing tool (diff by default) that will be used to show
   changes.
 ```
+<!--mdtogo-->
 
 The output is always YAML.
 
@@ -306,15 +324,24 @@ The output is always YAML.
 KUBECTL_EXTERNAL_DIFF, if used, is expected to follow the preceding convention.
 
 #### Examples
+
+<!--mdtogo:DiffExamples-->
 ```sh
 # diff the config in "my-dir" against the live cluster resources
 kpt live diff my-dir/
 ```
+<!--mdtogo-->
 
 ### fetch-k8s-schema
+
+<!--mdtogo:FetchK8sSchemaShort
+    Fetch the OpenAPI schema from the cluster.
+-->
+
 Downloads and prints the OpenAPI schema from the cluster
 given by the context.
 
+<!--mdtogo:FetchK8sSchemaLong-->
 ```
 kpt live fetch-k8s-schema [flags]
 
@@ -322,8 +349,11 @@ FLAGS:
   --pretty-print
     Format the output before printing.
 ```
+<!--mdtogo-->
 
 #### Examples
+
+<!--mdtogo:FetchK8sSchemaExamples-->
 ```sh
 # print the schema for the cluster given by the current context
 kpt live fetch-k8s-schema
@@ -331,10 +361,15 @@ kpt live fetch-k8s-schema
 # print the schema after formatting using a named context
 kpt live fetch-k8s-schema --context=myContext --pretty-print
 ```
+<!--mdtogo-->
 
 ### init
-Initializes a package with an object to track previously applied resources.
 
+<!--mdtogo:InitShort-->
+Initializes a package with an object to track previously applied resources.
+<!--mdtogo-->
+
+<!--mdtogo:InitLong-->
 ```
 kpt live init DIR [flags]
 
@@ -351,11 +386,14 @@ FLAGS:
   in the package belong in the same namespace. If they are, that namespace will be used. If
   they are not, the namespace in the user's context will be chosen.
 ```
+<!--mdtogo-->
 
 The template resource is required by other live commands
 such as apply, preview and destroy.
 
 #### Examples
+
+<!--mdtogo:InitExamples-->
 ```sh
 # initialize a package
 kpt live init my-dir/
@@ -365,10 +403,15 @@ kpt live init my-dir/
 # initialize a package with a specific name for the group of resources
 kpt live init --namespace=test my-dir/
 ```
+<!--mdtogo-->
 
 ### preview
-Prints the changes `apply` would make to the cluster.
 
+<!--mdtogo:PreviewShort-->
+Prints the changes `apply` would make to the cluster.
+<!--mdtogo-->
+
+<!--mdtogo:PreviewLong-->
 ```
 kpt live preview DIR [flags]
 
@@ -380,9 +423,11 @@ FLAGS:
   --destroy
     If true, dry-run deletion of all resources.
 ```
-
+<!--mdtogo-->
 
 #### Examples
+
+<!--mdtogo:PreviewExamples-->
 ```sh
 # preview apply for a package
 kpt live preview my-dir/
@@ -392,11 +437,18 @@ kpt live preview my-dir/
 # preview destroy for a package
 kpt live preview --destroy my-dir/
 ```
+<!--mdtogo-->
 
 ### status
+
+<!--mdtogo:StatusShort
+    Status shows the status for the resources in the cluster.
+-->
+
 Print the status for all resources in the live state
 that belong to the current inventory.
 
+<!--mdtogo:StatusLong-->
 ```
 kpt live status (DIR | STDIN) [flags]
 
@@ -431,6 +483,7 @@ FLAGS:
   be enforced regardless of the value of the --poll-until flag. The default is
   to wait forever.
 ```
+<!--mdtogo-->
 
 The [Inventory Template] is used to look up the set of 
 resources in the inventory in the live state and poll all
@@ -438,6 +491,8 @@ those resources for their status until either an exit criteria has been met
 or the process is cancelled.
 
 #### Examples
+
+<!--mdtogo:StatusExamples-->
 ```sh
 # Monitor status for a set of resources based on manifests. Wait until all
 # resources have reconciled.
@@ -453,5 +508,6 @@ kpt live status my-app/ --poll-until=forever --output=table
 # Check status for a set of resources read from stdin with output in events format
 kpt cfg cat my-app | kpt live status
 ```
+<!--mdtogo-->
 
-[Inventory Template]: https://googlecontainertools.github.io/kpt/reference/live/apply/#prune
+[Inventory Template]: /reference/live?id=prune

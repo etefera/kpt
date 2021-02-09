@@ -3,25 +3,36 @@
 ## Commands
 
 ### desc
-Displays information about the upstream package in tabular format.
 
+<!--mdtogo:DescShort-->
+Displays information about the upstream package in tabular format.
+<!--mdtogo-->
+
+<!--mdtogo:DescLong-->
 ```
 kpt pkg desc DIR
 
 DIR:
   Path to a package directory
 ```
+<!--mdtogo-->
 
 #### Examples
 
+<!--mdtogo:DescExamples-->
 ```sh
 # display description for the local hello-world package
 kpt pkg desc hello-world/
 ```
+<!--mdtogo-->
 
 ### diff
-Displays differences between upstream and local packages.
 
+<!--mdtogo:DiffShort-->
+Displays differences between upstream and local packages.
+<!--mdtogo-->
+
+<!--mdtogo:DiffLong-->
 ```
 kpt pkg diff [DIR@VERSION]
 
@@ -72,8 +83,11 @@ ENVIRONMENT VARIABLES:
     # Using "-a" diff option
     KPT_EXTERNAL_DIFF_OPTS="-a" kpt pkg diff --diff-tool meld
 ```
+<!--mdtogo-->
 
 #### Examples
+
+<!--mdtogo:DiffExamples-->
 ```sh
 # Show changes in current package relative to upstream source package
 kpt pkg diff
@@ -101,11 +115,18 @@ kpt pkg diff @v4.0.0 --diff-type combined
 # version and upstream package at target version using meld
 kpt pkg diff @v4.0.0 --diff-type 3way --diff-tool meld --diff-tool-opts "-a"
 ```
+<!--mdtogo-->
 
 ### fix
+
+<!--mdtogo:FixShort
+    Fix a local package that uses deprecated features.
+-->
+
 Reads the local package, modifies the package to use the latest kpt features
 and fixes any deprecated feature traces.
 
+<!--mdtogo:FixLong-->
 ```
 kpt pkg fix LOCAL_PKG_DIRECTORY [flags]
 
@@ -118,8 +139,11 @@ FLAGS:
     if set, the fix command shall only print the fixes which will be made to the
     package without actually fixing/modifying the resources.
 ```
+<!--mdtogo-->
 
 #### Examples
+
+<!--mdtogo:FixExamples-->
 ```sh
 # print the fixes which will be made to the package without actually modifying
 # resources
@@ -130,11 +154,18 @@ kpt pkg fix . --dry-run
 # fix the package if it is using deprecated features
 kpt pkg fix .
 ```
+<!--mdtogo-->
 
 ### get
+
+<!--mdtogo:GetShort
+    Fetch a package from a git repository.
+-->
+
 Fetches a remote package from a git subdirectory and writes it to a new
 local directory.
 
+<!--mdtogo:GetLong-->
 ```
 kpt pkg get REPO_URI[.git]/PKG_PATH[@VERSION] LOCAL_DEST_DIRECTORY [flags]
 
@@ -170,12 +201,14 @@ LOCAL_DEST_DIRECTORY:
     * If the directory DOES exist and already contains a directory with
       the same name of the one that would be created: fail
 ```
+<!--mdtogo:GetLong-->
 
 The local directory name does not need to match the upstream
 directory name.
 
 #### Examples
 
+<!--mdtogo:GetExamples-->
 ```sh
 # fetch package cockroachdb from github.com/kubernetes/examples/staging/cockroachdb
 # creates directory ./cockroachdb/ containing the package contents
@@ -194,10 +227,15 @@ kpt pkg get https://github.com/kubernetes/examples.git/staging/cockroachdb@maste
 # creates directory ./examples fetched from the provided commit
 kpt pkg get https://github.com/kubernetes/examples.git/@[COMMIT_HASH] ./
 ```
+<!--mdtogo-->
 
 ### init
-Initializes an existing empty directory as an empty kpt package.
 
+<!--mdtogo:InitShort-->
+Initializes an existing empty directory as an empty kpt package.
+<!--mdtogo-->
+
+<!--mdtogo:InitLong-->
 ```
 kpt pkg init DIR [flags]
 
@@ -217,6 +255,7 @@ FLAGS:
 --url
   link to page with information about the package.
 ```
+<!--mdtogo-->
 
 **init is optional**: Any directory containing Kubernetes Resource
 Configuration may be treated as remote package without the existence of
@@ -227,17 +266,26 @@ additional packaging metadata.
 * DIR must be pushed to a git repo or repo subdirectory.
 
 #### Examples
+
+<!--mdtogo:InitExamples-->
 ```sh
 # writes Kptfile package meta if not found
 mkdir my-pkg
 kpt pkg init my-pkg --tag kpt.dev/app=cockroachdb \
     --description "my cockroachdb implementation"
 ```
+<!--mdtogo-->
 
 ### sync
+
+<!--mdtogo:SyncShort
+    Fetch and update packages declaratively
+-->
+
 Fetches and updates packages using a manifest to manage a collection
 of dependencies.
 
+<!--mdtogo:SyncLong-->
 ```
 kpt pkg sync LOCAL_PKG_DIR [flags]
 
@@ -250,6 +298,7 @@ ENVIRONMENT VARIABLES:
     Controls where to cache remote packages during updates.
     Defaults to ~/.kpt/repos/
 ```
+<!--mdtogo-->
 
 The manifest declares *all* direct dependencies of a package in a Kptfile.
 When `sync` is run, it will ensure each dependency has been fetched at the
@@ -258,46 +307,11 @@ specified ref.
 This is an alternative to managing package dependencies individually using
 the `get` and `update` commands.
 
-#### Examples
-
-```sh
-# print the dependencies that would be modified
-kpt pkg sync . --dry-run
-```
-
-```sh
-# sync the dependencies
-kpt pkg sync .
-```
-
-<!-- #### Dependencies
-
 For each dependency in the Kptfile, `sync` will ensure that it exists
 locally with the matching repo and ref.
 
 Dependencies are specified in the Kptfile `dependencies` field and can be
 added or updated with `kpt pkg sync set`.  e.g.
-
-```sh
-kpt pkg sync set https://github.com/GoogleContainerTools/kpt.git/package-examples/helloworld-set \
-    hello-world
-```
-
-The [sync-set] command must be run from within the local package directory and the
-last argument specifies the local destination directory for the dependency.
-
-Or edit the Kptfile directly:
-
-```yaml
-apiVersion: kpt.dev/v1alpha1
-kind: Kptfile
-dependencies:
-- name: hello-world
-  git:
-    repo: "https://github.com/GoogleContainerTools/kpt.git"
-    directory: "/package-examples/helloworld-set"
-    ref: "master"
-```
 
 Dependencies have following schema:
 
@@ -311,14 +325,31 @@ updateStrategy: <strategy to use when updating the dependency -- see kpt help up
 ensureNotExists: <remove the dependency, mutually exclusive with git>
 ```
 
-Dependencies maybe be updated by updating their `git.ref` field and running `kpt pkg sync`
+Dependencies may be updated by updating their `git.ref` field and running `kpt pkg sync`
 against the directory.
 
-[sync-set]: set -->
+#### Examples
+
+<!--mdtogo:SyncExamples-->
+```sh
+# print the dependencies that would be modified
+kpt pkg sync . --dry-run
+```
+
+```sh
+# sync the dependencies
+kpt pkg sync .
+```
+<!--mdtogo-->
+
 
 ### sync set
-Add or updates Kptfile dependencies programmatically.
 
+<!--mdtogo:SyncSetShort-->
+Add or updates Kptfile dependencies programmatically.
+<!--mdtogo-->
+
+<!--mdtogo:SyncSetLong-->
 ```
 kpt pkg set REPO_URI[.git]/PKG_PATH[@VERSION] LOCAL_DEST_DIRECTORY [flags]
 
@@ -374,9 +405,11 @@ FLAGS:
 
 Note: command must be run from within the directory containing Kptfile
 to be updated.
+<!--mdtogo-->
 
 #### Examples
 
+<!--mdtogo:SyncSetExamples-->
 ```sh
 # init a package so it can be synced
 kpt pkg init
@@ -394,10 +427,15 @@ kpt pkg sync .
 kpt pkg sync set https://github.com/GoogleContainerTools/kpt.git/package-examples/helloworld-set@v0.2.0 \
     hello-world --strategy=resource-merge
 ```
+<!--mdtogo-->
 
 ### update
-Pulls upstream changes and merges them into a local package.
 
+<!--mdtogo:UpdateShort-->
+Pulls upstream changes and merges them into a local package.
+<!--mdtogo-->
+
+<!--mdtogo:UpdateLong-->
 ```
 kpt pkg update LOCAL_PKG_DIR[@VERSION] [flags]
 
@@ -443,12 +481,14 @@ ENVIRONMENT VARIABLES:
     local packages.
     Defaults to ~/.kpt/repos/
 ```
+<!--mdtogo-->
 
 Changes may be applied using one of several strategies. All
 changes must be committed to git before running `update`.
 
 #### Examples
 
+<!--mdtogo:UpdateExamples-->
 ```sh
 # update my-package-dir/
 git add . && git commit -m 'some message'
@@ -466,3 +506,4 @@ kpt pkg update my-package-dir/@v1.3
 git add . && git commit -m "package updates"
 kpt pkg  update my-package-dir/@master --strategy alpha-git-patch
 ```
+<!--mdtogo-->

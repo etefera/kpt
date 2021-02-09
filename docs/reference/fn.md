@@ -3,9 +3,13 @@
 ## Commands
 
 ### export
+
+<!--mdtogo:ExportShort-->
 Exports a workflow pipeline that runs kpt functions alongside necessary
 configurations.
+<!--mdtogo-->
 
+<!--mdtogo:ExportLong-->
 ```
 kpt fn export DIR/ [--fn-path FUNCTIONS_DIR/] --workflow ORCHESTRATOR [--output OUTPUT_FILENAME]
 
@@ -25,9 +29,11 @@ OUTPUT_FILENAME:
   Specifies the filename of the generated pipeline. If omitted, the default
   output is stdout
 ```
+<!--mdtogo-->
 
 #### Examples
 
+<!--mdtogo:ExportExamples-->
 ```sh
 # read functions from DIR, run them against it as one step.
 # write the generated GitHub Actions pipeline to main.yaml.
@@ -39,17 +45,23 @@ kpt fn export DIR/ --output main.yaml --workflow github-actions
 # write the generated Cloud Build pipeline to stdout.
 kpt fn export DIR/ --fn-path FUNCTIONS_DIR/ --workflow cloud-build
 ```
+<!--mdtogo-->
 
 ### run
+
+<!--mdtogo:RunShort-->
 Generate, transform, or validate configuration files using locally run
 functions.
+<!--mdtogo-->
 
+<!--mdtogo:RunLong-->
 ```
 kpt fn run DIR [flags]
 
 DIR:
   Path to a package directory.  Defaults to stdin if unspecified.
 ```
+<!--mdtogo-->
 
 Functions are packaged as container images, starlark scripts, or binary
 executables which are run against the contents of a package.
@@ -61,7 +73,7 @@ container `STDERR`.
 
 #### Examples
 
-<!--mdtogo:Examples-->
+<!--mdtogo:RunExamples-->
 
 ```sh
 # read the Resources from DIR, provide them to a container my-fun as input,
@@ -90,7 +102,6 @@ kpt fn run DIR/
 # print the results to stdout
 kpt fn source . | kpt fn run --image gcr.io/example.com/my-fn
 ```
-
 <!--mdtogo-->
 
 #### Structured Results
@@ -434,33 +445,46 @@ because:
 * it takes flags as arguments
 
 ### sink
-Implements a [sink function] by reading STDIN and writing configuration.
 
+<!--mdtogo:SinkShort-->
+Implements a [sink function] by reading STDIN and writing configuration.
+<!--mdtogo-->
+
+<!--mdtogo:SinkLong-->
 ```
 kpt fn sink [DIR]
 
 DIR:
   Path to a package directory.  Defaults to stdout if unspecified.
 ```
+<!--mdtogo-->
 
 The `sink` will not prune / delete files for delete resources because it only knows
 about files for which it sees input resources.
 
 ### source
-Implements a [source function] by reading configuration and writing to STDOUT.
 
+<!--mdtogo:SourceShort-->
+Implements a [source function] by reading configuration and writing to STDOUT.
+<!--mdtogo-->
+
+<!--mdtogo:SourceLong-->
 ```
 kpt fn source [DIR...]
 
 DIR:
   Path to a package directory.  Defaults to stdin if unspecified.
 ```
+<!--mdtogo-->
+
 #### Examples
 
+<!--mdtogo:SourceExamples-->
 ```sh
 # print to stdout configuration from DIR/ formatted as an input source
 kpt fn source DIR/
 ```
+<!--mdtogo:-->
 
 [typescript result]: https://github.com/GoogleContainerTools/kpt-functions-sdk/blob/master/ts/kpt-functions/src/types.ts
 [Docker Volumes]: https://docs.docker.com/storage/volumes/

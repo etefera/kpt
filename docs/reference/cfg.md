@@ -3,8 +3,12 @@
 ## Commands
 
 ### annotate
-Sets annotations on resources.
 
+<!--mdtogo:AnnotateShort-->
+Sets annotations on resources.
+<!--mdtogo-->
+
+<!--mdtogo:AnnotateLong-->
 ```
 kpt cfg annotate DIR --kv KEY=VALUE...
 
@@ -31,12 +35,14 @@ FLAGS:
 --recurse-subpackages, -R
   Add annotations recursively in all the nested subpackages
 ```
+<!--mdtogo-->
 
 This is useful when combined with other tools or commands that
 read annotations to configure their behavior.
 
 #### Examples
 
+<!--mdtogo:AnnotateExamples-->
 ```sh
 # set an annotation on all Resources: 'key: value'
 kpt cfg annotate DIR --kv key=value
@@ -56,11 +62,15 @@ kpt cfg annotate DIR --kv key=value --kind Service --name foo
 # set multiple annotations
 kpt cfg annotate DIR --kv key1=value1 --kv key2=value2
 ```
-
+<!--mdtogo-->
 
 ### cat
-Prints the resources in a package as yaml to stdout.
 
+<!--mdtogo:CatShort-->
+Prints the resources in a package as yaml to stdout.
+<!--mdtogo-->
+
+<!--mdtogo:CatLong-->
 ```
 kpt cfg cat DIR
 
@@ -101,20 +111,27 @@ FLAGS:
 --wrap-version string
   if set, wrap the output in this list type apiVersion.
 ```
+<!--mdtogo-->
 
 This is useful for printing only the resources in a package which might
 contain other non-resource files.
 
 #### Examples
 
+<!--mdtogo:CatExamples-->
 ```sh
 # print Resource config from a directory
 kpt cfg cat my-dir/
 ```
+<!--mdtogo-->
 
 ### count
-Summarizes the number of resources in a package.
 
+<!--mdtogo:CountShort-->
+Summarizes the number of resources in a package.
+<!--mdtogo-->
+
+<!--mdtogo:CountLong-->
 ```
 kpt cfg count [DIR]
 
@@ -128,8 +145,11 @@ count resources by kind. (default true)
 --recurse-subpackages, -R
   Prints count of resources recursively in all the nested subpackages. (default true)
 ```
+<!--mdtogo-->
+
 #### Examples
 
+<!--mdtogo:CountExamples-->
 ```sh
 # print Resource counts from a directory
 kpt cfg count my-dir/
@@ -139,13 +159,15 @@ kpt cfg count my-dir/
 # print Resource counts from a cluster
 kubectl get all -o yaml | kpt cfg count
 ```
+<!--mdtogo-->
 
 ### create-setter
-Creates a setter.
-<!-- Setters provide a solution for template-free setting or substitution of field
-values through package metadata (OpenAPI). They are a safer alternative to
-other substitution techniques which do not have the context of the
-structured data -- e.g. using `sed` to replace values. -->
+
+<!--mdtogo:CreateSetterShort-->
+Creates a context-aware setter.
+<!--mdtogo-->
+
+<!--mdtogo:CreateSetterLong-->
 ```
 kpt cfg create-setter DIR NAME VALUE
 
@@ -193,9 +215,11 @@ FLAGS:
   alternative to specifying the value as an argument. e.g. used to specify values
   that start with '-'
 ```
+<!--mdtogo-->
 
 #### Examples
 
+<!--mdtogo:CreateSetterExamples-->
 ```sh
 # create a setter called replicas for fields matching value "3"
 kpt cfg create-setter DIR/ replicas 3
@@ -224,10 +248,15 @@ kpt cfg create-setter DIR/ replicas 3 --set-by "package-default" \
 # only the final part of the the field path is specified
 kpt cfg create-setter DIR/ app nginx --field "annotations.app" --type string
 ```
+<!--mdtogo-->
 
 ### create-subst
-Creates a substitution.
 
+<!--mdtogo:CreateSubstShort-->
+Creates a substitution on top of setters to replace part of a field.
+<!--mdtogo-->
+
+<!--mdtogo:CreateSubstLong-->
 ```
 kpt cfg create-subst DIR NAME --field-value VALUE --pattern PATTERN
 
@@ -263,14 +292,11 @@ FLAGS:
 --recurse-subpackages, -R
   create substitution recursively in all the nested subpackages
 ```
-<!-- Substitutions provide a solution for template-free substitution of field values
-built on top of [setters].  They enable substituting values into part of a
-field, including combining multiple setters into a single value.
-
-See the [creating substitutions] guide for more info on creating
-substitutions. -->
+<!--mdtogo-->
 
 #### Examples
+
+<!--mdtogo:CreateSubstExamples-->
 ```sh
 
 # Automatically create setters when creating the substitution, inferring
@@ -306,10 +332,15 @@ kpt cfg create-subst DIR/ image-tag nginx:v1.7.9 \
 # 4. update the substitution value by setting one of the setters
 kpt cfg set . tag-setter v1.8.0
 ```
+<!--mdtogo-->
 
 ### delete-setter
-Deletes a setter.
 
+<!--mdtogo:DeleteSetterShort-->
+Deletes a setter.
+<!--mdtogo-->
+
+<!--mdtogo:DeleteSetterLong-->
 ```
 kpt cfg delete-setter DIR NAME
 
@@ -323,16 +354,24 @@ FLAGS:
 --recurse-subpackages, -R
   Delete setter recursively in all the nested subpackages
 ```
+<!--mdtogo-->
 
 #### Examples
+
+<!--mdtogo:DeleteSetterExamples-->
 ```sh
 # delete a setter named "replicas"
 kpt cfg delete-setter DIR/ replicas
 ```
+<!--mdtogo-->
 
 ### delete-subst
-Deletes a substitution.
 
+<!--mdtogo:DeleteSubstShort-->
+Deletes a substitution.
+<!--mdtogo-->
+
+<!--mdtogo:DeleteSubstLong-->
 ```
 kpt cfg delete-subst DIR NAME
 
@@ -346,17 +385,24 @@ FLAGS:
 --recurse-subpackages, -R
   Delete substitution recursively in all the nested subpackages
 ```
+<!--mdtogo-->
 
 #### Examples
 
+<!--mdtogo:DeleteSubstExamples-->
 ```sh
 # delete a substitution named "image-tag"
 kpt cfg delete-subst DIR/ image-tag
 ```
+<!--mdtogo-->
 
 ### fmt
-Formats the field ordering in YAML configuration files.
 
+<!--mdtogo:FmtShort-->
+Formats the field ordering in YAML configuration files.
+<!--mdtogo-->
+
+<!--mdtogo:FmtLong-->
 ```
 kpt cfg fmt [DIR]
 
@@ -384,6 +430,7 @@ FLAGS:
 --use-schema
   if true, uses openapi resource schema to format resources.
 ```
+<!--mdtogo-->
 
 Inputs may be directories, files or STDIN. Formatted resources must
 include both `apiVersion` and `kind` fields.
@@ -409,6 +456,7 @@ field paths.
 
 #### Examples
 
+<!--mdtogo:FmtExamples-->
 ```sh
 # format file1.yaml and file2.yml
 kpt cfg fmt file1.yaml file2.yml
@@ -428,11 +476,16 @@ kubectl get -o yaml deployments | kpt cfg fmt
 # format kustomize output
 kustomize build | kpt cfg fmt
 ```
+<!--mdtogo:FmtExamples-->
 
 ### grep
+
+<!--mdtogo:GrepShort-->
 Reads resources from a package or stdin and filters them by their
 field values.
+<!--mdtogo-->
 
+<!--mdtogo:GrepLong-->
 ```
 kpt cfg grep QUERY DIR
 
@@ -456,12 +509,14 @@ FLAGS:
 --recurse-subpackages, -R
   Grep recursively in all the nested subpackages
 ```
+<!--mdtogo-->
 
 Grep may have sources such as `kubectl get -o yaml` piped to it or may
 be piped to other commands such as `kpt cfg tree` for display.
 
 #### Examples
 
+<!--mdtogo:GrepExamples-->
 ```sh
 # find deployment resources
 kpt cfg grep "kind=Deployment" my-dir/
@@ -482,10 +537,15 @@ kpt cfg grep "metadata.name=nginx" my-dir/ | kpt cfg tree
 kpt cfg grep "spec.template.spec.containers[name=nginx].image=nginx:1\.7\.9" \
     my-dir/ | kpt cfg tree
 ```
+<!--mdtogo-->
 
 ### list-setters
-Displays the setters that may be provided to the set command.
 
+<!--mdtogo:ListSettersShort-->
+Displays the setters that may be provided to the set command.
+<!--mdtogo-->
+
+<!--mdtogo:ListSettersLong-->
 ```
 kpt cfg list-setters DIR [NAME]
 
@@ -495,6 +555,8 @@ DIR
 NAME
   Optional.  The name of the setter to display.
 ```
+<!--mdtogo-->
+
 It also displays the following:
 
 - The current setter value
@@ -503,6 +565,8 @@ It also displays the following:
 - The name of fields that would be updated by calling set
 
 #### Examples
+
+<!--mdtogo:ListSettersExamples-->
 ```
 # list the setters in the hello-world package
 kpt cfg list-setters hello-world/
@@ -510,11 +574,16 @@ kpt cfg list-setters hello-world/
   NAME     VALUE    SET BY    DESCRIPTION   COUNT  
 replicas   4       isabella   good value    1
 ```
+<!--mdtogo-->
 
 ### set
+
+<!--mdtogo:SetShort-->
 Modifies configuration by setting or substituting
 a user provided value into resource fields.
+<!--mdtogo-->
 
+<!--mdtogo:SetLong-->
 ```
 kpt cfg set DIR NAME VALUE
 
@@ -539,6 +608,7 @@ FLAGS:
   Optional flag, the values of the setter to be set to
   e.g. used to specify values that start with '-'
 ```
+<!--mdtogo-->
 
 Which fields are set or
 have values substituted is configured by line comments on the configuration
@@ -547,44 +617,9 @@ fields.
 - Calling *set* may change multiple fields at once.
 - The *set* command may only be run on a directory containing a Kptfile.
 
-<!-- Example setter referenced from a field in a configuration file:
-
-```yaml
-kind: Deployment
-metadata:
-  name: foo
-spec:
-  replicas: 3  # {"$ref":"#/definitions/io.k8s.cli.setters.replicas"}
-```
-
-One could the replicas field to 4 by running
-
-``` sh
-kpt cfg set hello-world/ replicas 4
-```
-
-#### Description
-
-Setters may have a description of the current value.  This may be defined
-along with the value by specifying the `--description` flag.
-
-#### SetBy
-
-Setters may record who set the current value.  This may be defined by
-specifying the `--set-by` flag.  If unspecified the current
-value for set-by will be cleared from the setter.
-
-#### Substitutions
-
-Substitutions define field values which may be composed of one or more setters
-substituted into a string pattern.  e.g. setting only the tag portion of the
-`image` field.
-
-When set is called, it may also update substitutions which are derived from
-the setter. -->
-
 #### Examples
 
+<!--mdtogo:SetExamples-->
 ```sh
 # set replicas to 3 using the 'replicas' setter
 kpt cfg set hello-world/ replicas 3
@@ -605,11 +640,16 @@ kpt cfg set hello-world/ replicas 5 --set-by "mia"
 # the tag setter is referenced as a value by a substitution in the Kptfile
 kpt cfg set hello-world/ tag 1.8.1
 ```
+<!--mdtogo-->
 
 ### tree
+
+<!--mdtogo:TreeShort-->
 Displays the contents of a package using a tree structure to show
 the relationships between directories, resources, and fields.
+<!--mdtogo-->
 
+<!--mdtogo:TreeLong-->
 ```
 kpt cfg tree [DIR] [flags]
 
@@ -644,6 +684,7 @@ FLAGS:
 --resources
   if true, print the resource reservations
 ```
+<!--mdtogo-->
 
 Supports a number of built-in fields such as replicas, images, ports,
 etc.  Additional fields may be printed by providing the `--field` flag
@@ -655,6 +696,7 @@ Otherwise, directory graph structure is used.
 
 #### Examples
 
+<!--mdtogo:TreeExamples-->
 ```sh
 # print Resources using directory structure
 kpt cfg tree my-dir/
@@ -695,3 +737,4 @@ kubectl get all -o yaml | kpt cfg tree \
   --field="status.conditions[type=Ready].status" \
   --field="status.conditions[type=ContainersReady].status"
 ```
+<!--mdtogo-->
