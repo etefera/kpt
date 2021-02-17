@@ -16,6 +16,8 @@
     * [Transformers](catalog/transformers)
     * [Validators and Sinks](catalog/validators)
 
+- [Guides](guides/)
+
 - About
     * [Design](about/kpt-design)
 
