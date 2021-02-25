@@ -35,15 +35,17 @@ jobs:
         working-directory: href-checker
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      - name: Build site
+      - name: Build Site
         uses: docker/build-push-action@v2
         with:
           context: ./site
           load: true
           tags: kpt-site:latest
+      - name: Run Site
+        run: docker run -p 3000:80 -d kpt-site:latest 
       - name: Run Site Checker
         shell: bash
-        run: docker run -p 3000:80 -d kpt-site:latest  || curl http://localhost:3000 || ! (npx href-checker/ http://localhost:3000 --bad-content="404 - Not found" --silent --no-off-site -c=15 | grep . )
+        run:  ls -R && ! (npx href-checker/ http://localhost:3000 --bad-content="404 - Not found" --silent --no-off-site -c=15 | grep . )
 
       #   run: |
       #     pub global activate linkcheck
