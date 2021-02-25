@@ -41,12 +41,9 @@ jobs:
           context: ./site
           load: true
           tags: kpt-site:latest
-      - uses: addnab/docker-run-action@v2
-        with:
-          image: kpt-site:latest
       - name: Run Site Checker
         shell: bash
-        run: echo "Running check." || ! (npx href-checker/ http://localhost:80 --bad-content="404 - Not found" --silent --no-off-site -c=15 | grep . )
+        run: docker run -p 3000:80 -d kpt-site:latest  || ! (npx href-checker/ http://localhost:3000 --bad-content="404 - Not found" --silent --no-off-site -c=15 | grep . )
 
       #   run: |
       #     pub global activate linkcheck
