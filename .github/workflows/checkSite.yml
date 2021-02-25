@@ -43,7 +43,7 @@ jobs:
           tags: kpt-site:latest
       - name: Run Site Checker
         shell: bash
-        run: docker run -p 3000:80 -d kpt-site:latest  || ! (npx href-checker/ http://localhost:3000 --bad-content="404 - Not found" --silent --no-off-site -c=15 | grep . )
+        run: docker run -p 3000:80 -d kpt-site:latest  || curl http://localhost:3000 || ! (npx href-checker/ http://localhost:3000 --bad-content="404 - Not found" --silent --no-off-site -c=15 | grep . )
 
       #   run: |
       #     pub global activate linkcheck
