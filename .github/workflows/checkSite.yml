@@ -44,7 +44,7 @@ jobs:
         with:
           image: kpt-site:latest
       - name: Run Site Checker
-        run: ! (npx href-checker/ http://localhost:80 --bad-content="404 - Not found" --silent --no-off-site -c=15 | grep . )
+        run: | ! (npx href-checker/ http://localhost:80 --bad-content="404 - Not found" --silent --no-off-site -c=15 | grep . )
 
       #   run: |
       #     pub global activate linkcheck
