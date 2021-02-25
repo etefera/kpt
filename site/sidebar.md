@@ -1,4 +1,4 @@
-- [Installation](installationasdf/)
+- [Installation](installation/)
     - [Docker](installation/docker/)
     - [gcloud](installation/gcloud/)
     - [Homebrew](installation/homebrew/)
