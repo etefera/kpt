@@ -39,6 +39,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./site
+          load: true
           tags: kpt-site:latest
       - uses: addnab/docker-run-action@v2
         with:
