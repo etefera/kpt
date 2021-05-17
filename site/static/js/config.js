@@ -11,6 +11,8 @@ window.$docsify = {
     "/*.*/sidebar.md": "/sidebar.md",
     // Top level pages without a trailing slash.
     "/(\w)\.README.md": "/$1/README.md",
+    // Nested pages without a trailing slash.
+    "/(\w)/(.+)\.README.md": "/$1/$2/README.md"
 
   },
   coverpage: "coverpage.md",

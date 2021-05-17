@@ -1,5 +1,5 @@
 // Matches a path like /book/02-concepts/01-packages
-const bookPath = /^\/book\/(\d+)-(.+)\/(\d+)?-?(.+)?/;
+const bookPath = /^\/book\/(\d+)-([\w-]+)\/?(\d+)?-?([\w-]+)?/;
 
 function addGitHubWidget(hook) {
   const issueIcon = document.createElement("span");
@@ -136,9 +136,11 @@ function processAsciinemaTags(content) {
 
 function activateMissingSlashLinks(sidebar) {
   const sidebarLinks = Array.from(sidebar.getElementsByTagName("a"));
-  const slashedPath = document.location.href + '/';
+  const slashedPath = document.location.href + "/";
 
-  sidebarLinks.forEach(a => a.href === slashedPath && a.parentElement.classList.add('active'));
+  sidebarLinks.forEach(
+    (a) => a.href === slashedPath && a.parentElement.classList.add("active")
+  );
 }
 
 function localPlugins(hook, _vm) {
@@ -164,6 +166,7 @@ function localPlugins(hook, _vm) {
   hook.doneEach(function () {
     const sidebar = document.getElementsByClassName("sidebar-nav").item(0);
 
+    // Include paths without slashes in the sidebar.
     activateMissingSlashLinks(sidebar);
 
     // Only show child pages for currently active page to avoid sidebar cluttering.
