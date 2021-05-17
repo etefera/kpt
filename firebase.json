@@ -10,7 +10,7 @@
     ],
     "rewrites": [
       {
-        "regex": "^[\/\\w\\.-]+[^\\.]..$",
+        "source": "**",
         "destination": "/index.html"
       }
     ]
