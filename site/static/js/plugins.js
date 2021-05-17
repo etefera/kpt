@@ -134,6 +134,13 @@ function processAsciinemaTags(content) {
   );
 }
 
+function activateMissingSlashLinks(sidebar) {
+  const sidebarLinks = Array.from(sidebar.getElementsByTagName("a"));
+  const slashedPath = document.location.href + '/';
+
+  sidebarLinks.forEach(a => a.href === slashedPath && a.parentElement.classList.add('active'));
+}
+
 function localPlugins(hook, _vm) {
   // Process Markdown directives appropriately.
   hook.beforeEach(function (content) {
@@ -156,6 +163,8 @@ function localPlugins(hook, _vm) {
   // Process elements in the navigation sidebar.
   hook.doneEach(function () {
     const sidebar = document.getElementsByClassName("sidebar-nav").item(0);
+
+    activateMissingSlashLinks(sidebar);
 
     // Only show child pages for currently active page to avoid sidebar cluttering.
     addSidebarCollapsibility(sidebar);
