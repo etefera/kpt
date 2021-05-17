@@ -8,6 +8,23 @@
       "**/node_modules/**",
       "**/*.test.*"
     ],
+    "redirects": [
+      {
+        "source": "/!(README):p1.md",
+        "destination": "/:p1/README.md",
+        "type": 301
+      },
+      {
+        "source": "/reference/:command/:subcommand.md",
+        "destination": "/reference/:command/:subcommand/README.md",
+        "type": 301
+      },
+      {
+        "source": "/:root/:first.md",
+        "destination": "/:root/:first/README.md",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "**",
