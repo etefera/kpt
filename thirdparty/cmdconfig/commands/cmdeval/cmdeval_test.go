@@ -33,7 +33,7 @@ func TestRunFnCommand_preRunE(t *testing.T) {
 		mount          []string
 	}{
 		{
-			name: "config map",
+			name: "configMap",
 			args: []string{"eval", "dir", "--image", "foo:bar", "--", "a=b", "c=d", "e=f"},
 			path: "dir",
 			expected: `
@@ -48,7 +48,7 @@ apiVersion: v1
 `,
 		},
 		{
-			name:   "config map stdin / stdout",
+			name:   "configMap stdin / stdout",
 			args:   []string{"eval", "-", "--image", "foo:bar", "--", "a=b", "c=d", "e=f"},
 			input:  os.Stdin,
 			output: os.Stdout,
@@ -64,7 +64,7 @@ apiVersion: v1
 `,
 		},
 		{
-			name:   "config map dry-run",
+			name:   "configMap dry-run",
 			args:   []string{"eval", "dir", "--image", "foo:bar", "--dry-run", "--", "a=b", "c=d", "e=f"},
 			output: os.Stdout,
 			path:   "dir",
@@ -80,7 +80,7 @@ apiVersion: v1
 `,
 		},
 		{
-			name: "config map no args",
+			name: "configMap no args",
 			args: []string{"eval", "dir", "--image", "foo:bar"},
 			path: "dir",
 			expected: `
@@ -200,17 +200,17 @@ apiVersion: v1
 `,
 		},
 		{
-			name: "config map multi args",
+			name: "configMap multi args",
 			args: []string{"eval", "dir", "dir2", "--image", "foo:bar", "--", "a=b", "c=d", "e=f"},
 			err:  "0 or 1 arguments supported",
 		},
 		{
-			name: "config map not image",
+			name: "configMap not image",
 			args: []string{"eval", "dir", "--", "a=b", "c=d", "e=f"},
 			err:  "must specify --image",
 		},
 		{
-			name: "config map bad data",
+			name: "configMap bad data",
 			args: []string{"eval", "dir", "--image", "foo:bar", "--", "a=b", "c", "e=f"},
 			err:  "must have keys and values separated by",
 		},
