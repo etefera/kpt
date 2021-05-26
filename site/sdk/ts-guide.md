@@ -61,7 +61,7 @@ This process will create the following:
 
 1. `package.json`: The `kpt-functions` framework library is the only item
    declared in `dependencies`. Everything required to compile and test your
-   config function is declared as `devDependencies`, including the
+   function is declared as `devDependencies`, including the
    `create-kpt-functions` CLI discussed later in the `README`.
 1. `src/`: Directory containing the source files for all your functions, e.g.:
    - `my_func.ts`: Implement your function's interface here.
@@ -125,7 +125,7 @@ $ npm test
 
 ## Debug and Test the Function
 
-You may want to run a function developed with one of the config function SDKs
+You may want to run a function developed with one of the function SDKs
 using the exec runtime in order to avoid the overhead associated with running
 a container. To run your function in the exec runtime, you will first need to
 package your function as an executable.

@@ -35,7 +35,7 @@ func (p *ResourceGroupStreamManifestReader) Read() ([]*unstructured.Unstructured
 		return []*unstructured.Unstructured{}, err
 	}
 	// Split the bytes into resource configs, and if the resource
-	// config is a Kptfile, transform it into a ResourceGroup object.
+	// configuration is a Kptfile, transform it into a ResourceGroup object.
 	var rgObj *unstructured.Unstructured
 	var filteredBytes bytes.Buffer
 	resources := bytes.Split(resourceBytes.Bytes(), ResourceSeparator)
@@ -70,7 +70,7 @@ func (p *ResourceGroupStreamManifestReader) Read() ([]*unstructured.Unstructured
 
 var kptFileTemplate = kptfilev1alpha2.KptFile{ResourceMeta: kptfilev1alpha2.TypeMeta}
 
-// isKptfile returns true if the passed resource config is a Kptfile; false otherwise
+// isKptfile returns true if the passed resource configuration is a Kptfile; false otherwise
 func isKptfile(resource []byte) bool {
 	d := yaml.NewDecoder(bytes.NewReader(resource))
 	d.KnownFields(true)

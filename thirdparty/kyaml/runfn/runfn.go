@@ -43,7 +43,7 @@ type RunFns struct {
 	// uniquePath is the absolute version of Path
 	uniquePath types.UniquePath
 
-	// FnConfigPath specifies a config file which contains the configs used in
+	// FnConfigPath specifies a functionConfig file which contains the configs used in
 	// function input. It can be absolute or relative to kpt working directory.
 	// The exact format depends on the OS.
 	FnConfigPath string

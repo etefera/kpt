@@ -22,7 +22,7 @@ import (
 	"github.com/GoogleContainerTools/kpt/internal/cmdexport/types"
 )
 
-// CircleCI represents a config file for CircleCI pipelines.
+// CircleCI represents a CircleCI pipeline configuration file.
 type CircleCI struct {
 	Version   string                       `yaml:",omitempty"`
 	Orbs      map[string]*CircleCIOrb      `yaml:",omitempty"`

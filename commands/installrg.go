@@ -46,7 +46,7 @@ func NewCmdInstallRG(f cmdutil.Factory, ioStreams genericclioptions.IOStreams) *
 }
 
 // Run executes the installation of the ResourceGroup custom resource definition. Uses
-// the current context of the kube config file (or the kube config flags) to
+// the current context of the kubeconfig file (or the kubeconfig flags) to
 // determine the APIServer to install the CRD.
 func (ir *InstallRGRunner) Run(reader io.Reader, args []string) error {
 	// Validate the number of arguments.

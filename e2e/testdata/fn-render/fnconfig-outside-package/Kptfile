@@ -7,4 +7,4 @@ pipeline:
     - image: gcr.io/kpt-fn/set-label:unstable
       configPath: labelconfig.yaml
     - image: gcr.io/kpt-fn/set-label:unstable
-      configPath: some/../../home/.kube/config # config pointing outside the package
+      configPath: some/../../home/.kube/config # functionConfig pointing outside the package
