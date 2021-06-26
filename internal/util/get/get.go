@@ -52,6 +52,8 @@ type Command struct {
 	// Kptfile. This determines how changes will be merged when updating the
 	// package.
 	UpdateStrategy kptfilev1.UpdateStrategyType
+
+	RequireKptfile bool
 }
 
 // Run runs the Command.
@@ -77,18 +79,20 @@ func (c Command) Run(ctx context.Context) error {
 	}
 	c.Git.Directory = repoDir
 
-	kf := kptfileutil.DefaultKptfile(c.Name)
-	kf.Upstream = &kptfilev1.Upstream{
-		Type:           kptfilev1.GitOrigin,
-		Git:            c.Git,
-		UpdateStrategy: c.UpdateStrategy,
-	}
+	// Do not create a default Kptfile if one is required to already exist..
+	if !c.RequireKptfile {
+		kf := kptfileutil.DefaultKptfile(c.Name)
+		kf.Upstream = &kptfilev1.Upstream{
+			Type:           kptfilev1.GitOrigin,
+			Git:            c.Git,
+			UpdateStrategy: c.UpdateStrategy,
+		}
 
-	err = kptfileutil.WriteFile(c.Destination, kf)
-	if err != nil {
-		return errors.E(op, types.UniquePath(c.Destination), err)
+		err = kptfileutil.WriteFile(c.Destination, kf)
+		if err != nil {
+			return errors.E(op, types.UniquePath(c.Destination), err)
+		}
 	}
-
 	p, err := pkg.New(c.Destination)
 	if err != nil {
 		return errors.E(op, types.UniquePath(c.Destination), err)

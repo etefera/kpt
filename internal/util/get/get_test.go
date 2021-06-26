@@ -793,6 +793,29 @@ func TestCommand_Run_failInvalidTag(t *testing.T) {
 		t.FailNow()
 	}
 }
+func TestCommand_Run_failNoRequiredKptfile(t *testing.T) {
+	g, w, clean := testutil.SetupRepoAndWorkspace(t, testutil.Content{
+		Data:   testutil.Dataset1,
+		Branch: "master",
+	})
+	defer clean()
+
+	err := Command{
+		Git: &kptfilev1.Git{
+			Repo:      g.RepoDirectory,
+			Directory: "/",
+			Ref:       "master",
+		},
+		Destination:    filepath.Join(w.WorkspaceDirectory, g.RepoDirectory),
+		RequireKptfile: true,
+	}.Run(fake.CtxWithDefaultPrinter())
+	if !assert.Error(t, err) {
+		t.FailNow()
+	}
+	if !assert.Contains(t, err.Error(), "no kptfile found") {
+		t.FailNow()
+	}
+}
 
 func TestCommand_Run_subpackages(t *testing.T) {
 	testCases := map[string]struct {

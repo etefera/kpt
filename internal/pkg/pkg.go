@@ -148,6 +148,9 @@ func (p *Pkg) Kptfile() (*kptfilev1.KptFile, error) {
 	if p.kptfile == nil {
 		kf, err := ReadKptfile(p.UniquePath.String())
 		if err != nil {
+			if errors.Is(err, os.ErrNotExist) {
+				return nil, errors.E(fmt.Errorf("no kptfile found in repo: %w", err))
+			}
 			return nil, err
 		}
 		p.kptfile = kf

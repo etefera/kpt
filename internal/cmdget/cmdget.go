@@ -50,6 +50,7 @@ func NewRunner(ctx context.Context, parent string) *Runner {
 	c.Flags().StringVar(&r.strategy, "strategy", string(kptfilev1.ResourceMerge),
 		"update strategy that should be used when updating this package -- must be one of: "+
 			strings.Join(kptfilev1.UpdateStrategiesAsStrings(), ","))
+	c.Flags().BoolVar(&r.Get.RequireKptfile, "require-kptfile", false, "Fail if the package path does not contain a Kptfile")
 	return r
 }
 
